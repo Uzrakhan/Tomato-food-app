@@ -3,8 +3,8 @@ const restaurantData = {
         {
             id: 1,
             name: 'Barkaas Indo-Arabic Restaurant',
-            cusines: ['Arabian','Mughlai','Kebab','Mandi','Desserts','Beverages'],
-            location: 'Plot 24, Second Floor, Chandralok Colony, Opposite Nagar Nigam Zone 3, Aliganj, Lucknow',
+            cuisines: ['Arabian','Mughlai','Kebab','Mandi','Desserts','Beverages'],
+            location: 'Aliganj, Lucknow',
             rating: 3.5,
             priceRange: '1300 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -15,8 +15,8 @@ const restaurantData = {
         {
             id: 2,
             name: 'The Chocolate Room',
-            cusines: ['Bakery','Cafe','Coffee','Italian','Salad','Chinese','Mexican'],
-            location: 'Shop- 4, Ground Floor, Habibullah Estate, Apex Tower, Mahatma Gandhi Marg, Hazratganj, Lucknow',
+            cuisines: ['Bakery','Cafe','Coffee','Italian','Salad','Chinese','Mexican'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '1300 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -27,8 +27,8 @@ const restaurantData = {
         {
             id: 3,
             name: 'FashionTV Diner',
-            cusines: ['Sandwich','Pasta','North Indian','Lucknowi','Salad','Chinese','Biryani'],
-            location: '4, Shahnajaf Road, Opposite Saharganj Mall Hazratganj, Lucknow',
+            cuisines: ['Sandwich','Pasta','North Indian','Lucknowi','Salad','Chinese','Biryani'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '750 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -39,8 +39,8 @@ const restaurantData = {
         {
             id: 3,
             name: 'Umrao Jaan Restaurant & Cafe',
-            cusines: ['Mughlai','Kebab','North Indian','Mandi','Desserts','Chinese','Biryani'],
-            location: 'House 6, Lajpat Bhawan, Rani Laxmi Bai Ward, Zone 2, Kaiserbagh, Lucknow',
+            cuisines: ['Mughlai','Kebab','North Indian','Mandi','Desserts','Chinese','Biryani'],
+            location: 'Kaiserbagh, Lucknow',
             rating: 3.8,
             priceRange: '1500 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -51,8 +51,8 @@ const restaurantData = {
         {
             id: 4,
             name: 'Classic Restaurant - Treat',
-            cusines: ['Street Food','Beverages','North Indian','Mandi','Desserts','Chinese','BBQ','Continental'],
-            location: 'M 28, 1st Floor, Gole Market, Mahanagar, Lucknow',
+            cuisines: ['Street Food','Beverages','North Indian','Mandi','Desserts','Chinese','BBQ','Continental'],
+            location: 'Mahanagar, Lucknow',
             rating: 3.4,
             priceRange: '1500 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -63,8 +63,8 @@ const restaurantData = {
         {
             id: 5,
             name: 'Flavours - All Day Dining',
-            cusines: ['Asian','Salad','North Indian','Biryani','Desserts','Chinese'],
-            location: 'Plot GB-60, Zone 20, Alambagh, Lucknow',
+            cuisines: ['Asian','Salad','North Indian','Biryani','Desserts','Chinese'],
+            location: 'Alambagh, Lucknow',
             rating: 4.0,
             priceRange: '1000 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -75,8 +75,8 @@ const restaurantData = {
         {
             id: 6,
             name: 'Hazratganj SOCIAL',
-            cusines: ['Pasta','Burger','North Indian','Biryani','Kebab','Chinese','Momos'],
-            location: 'Plot 26, 3rd & 4th Floor, Hazratganj, Lucknow',
+            cuisines: ['Pasta','Burger','North Indian','Biryani','Kebab','Chinese','Momos'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.2,
             priceRange: '1600 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -87,8 +87,8 @@ const restaurantData = {
         {
             id: 7,
             name: 'Hons All Day Dining',
-            cusines: ['Cafe','Coffe','Tea','Shake','Continental','Italian','Beverages'],
-            location: '29, Shop 6, Naval Kishor Road, Hazratganj, Lucknow',
+            cuisines: ['Cafe','Coffe','Tea','Shake','Continental','Italian','Beverages'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '1200 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -99,8 +99,8 @@ const restaurantData = {
         {
             id: 8,
             name: 'Tanatan',
-            cusines: ['North Indian','Beverages', 'Lucknowi'],
-            location: '94, Ground & 1st Floor, Durga Bhawan, Mahatma Gandhi Marg, Mall Road, Hazratganj, Lucknow',
+            cuisines: ['North Indian','Beverages', 'Lucknowi'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.6,
             priceRange: '2500 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -111,8 +111,8 @@ const restaurantData = {
         {
             id: 9,
             name: 'Molecule Air Bar',
-            cusines: ['North Indian','Beverages', 'Continental','Desserts','Finger Food'],
-            location: '7th Floor, Riverside Mall, Vipin Khand, Gomti Nagar, Lucknow',
+            cuisines: ['North Indian','Beverages', 'Continental','Desserts','Finger Food'],
+            location: 'Gomti Nagar, Lucknow',
             rating: 4.7,
             priceRange: '1800 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -123,8 +123,8 @@ const restaurantData = {
         {
             id: 10,
             name: 'Fosho - Pan Asian & Italian Bistro',
-            cusines: ['Asian','Italian'],
-            location: '11, Habibullah Estate, Hazratganj, Lucknow',
+            cuisines: ['Asian','Italian'],
+            location: 'Hazratganj, Lucknow',
             rating: 4.9,
             priceRange: '1800 for two',
             openingHours: '12:30 PM - 12:20AM',
@@ -137,7 +137,7 @@ const restaurantData = {
         {
             id: 11,
             name: 'Sharma Ji Ki Chai',
-            cusines: ['Street Food','Tea'],
+            cuisines: ['Street Food','Tea'],
             location: 'Lalbagh, Lucknow',
             rating: 3.4,
             priceRange: '40 for one',
@@ -149,7 +149,7 @@ const restaurantData = {
         {
             id: 12,
             name: 'Royal Cafe',
-            cusines: ['North Indian','BBQ','Mughlai','Continental'],
+            cuisines: ['North Indian','BBQ','Mughlai','Continental'],
             location: 'Hazratganj, Lucknow',
             rating: 4.2,
             priceRange: '400 for one',
@@ -161,7 +161,7 @@ const restaurantData = {
         {
             id: 13,
             name: 'Sardar Ji Ke Mashoor Chhole Bhature - Punjabi Zaika',
-            cusines: ['North Indian'],
+            cuisines: ['North Indian'],
             location: 'Lalbagh, Lucknow',
             rating: 4.2,
             priceRange: '100 for one',
@@ -173,7 +173,7 @@ const restaurantData = {
         {
             id: 14,
             name: 'La Pinoz Pizza',
-            cusines: ['Pizza','Italian','Pasta','Fast Food'],
+            cuisines: ['Pizza','Italian','Pasta','Fast Food'],
             location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '250 for one',
@@ -185,7 +185,7 @@ const restaurantData = {
         {
             id: 15,
             name: 'The Hazelnut Factory',
-            cusines: ['Desserts','Bakery','Mithai','Cafe'],
+            cuisines: ['Desserts','Bakery','Mithai','Cafe'],
             location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '250 for one',
@@ -197,7 +197,7 @@ const restaurantData = {
         {
             id: 16,
             name: 'Burger King',
-            cusines: ['Desserts','Burger','Fast Food','Beverages'],
+            cuisines: ['Desserts','Burger','Fast Food','Beverages'],
             location: 'Hazratganj, Lucknow',
             rating: 4.0,
             priceRange: '150 for one',
@@ -209,7 +209,7 @@ const restaurantData = {
         {
             id: 17,
             name: 'The Cherry Tree Bakery & Cafe',
-            cusines: ['Desserts','Cafe','Bakery','Fast Food'],
+            cuisines: ['Desserts','Cafe','Bakery','Fast Food'],
             location: 'Hazratganj, Lucknow',
             rating: 4.1,
             priceRange: '500 for one',
@@ -221,7 +221,7 @@ const restaurantData = {
         {
             id: 18,
             name: 'Marksmen',
-            cusines: ['Chinese','South Indian','Fast Food','Burger','Continental'],
+            cuisines: ['Chinese','South Indian','Fast Food','Burger','Continental'],
             location: 'Lalbagh, Lucknow',
             rating: 4.2,
             priceRange: '500 for one',
@@ -233,7 +233,7 @@ const restaurantData = {
         {
             id: 19,
             name: 'KFC',
-            cusines: ['Burger','Fast Food','Rolls'],
+            cuisines: ['Burger','Fast Food','Rolls'],
             location: 'Lalbagh, Lucknow',
             rating: 4.2,
             priceRange: '500 for one',
@@ -245,7 +245,7 @@ const restaurantData = {
         {
             id: 20,
             name: 'The Belgian Waffle Co.',
-            cusines: ['Waffle','Pancake','Desserts','Ice Cream','Beverages'],
+            cuisines: ['Waffle','Pancake','Desserts','Ice Cream','Beverages'],
             location: 'Sapru Marg, Lucknow',
             rating: 4.3,
             priceRange: '150 for one',
@@ -257,7 +257,7 @@ const restaurantData = {
         {
             id: 21,
             name: 'Behrouz Biryani',
-            cusines: ['Biryani','Kebab','North Indian'],
+            cuisines: ['Biryani','Kebab','North Indian'],
             location: 'Hazratganj, Lucknow',
             rating: 4.7,
             priceRange: '200 for one',
@@ -271,7 +271,7 @@ const restaurantData = {
         {
             id: 22,
             name: 'Que',
-            cusines: ['North Indian','Continental','Finger Food','Chinese','Italian'],
+            cuisines: ['North Indian','Continental','Finger Food','Chinese','Italian'],
             location: 'Gomti Nagar, Lucknow',
             rating: 4.2,
             priceRange: '1000 for two',
@@ -283,7 +283,7 @@ const restaurantData = {
         {
             id: 23,
             name: 'Boombox Bar Xchange',
-            cusines: ['North Indian','Continental','Finger Food','Chinese','Italian','Desserts','Beverages'],
+            cuisines: ['North Indian','Continental','Finger Food','Chinese','Italian','Desserts','Beverages'],
             location: 'Summit Building , Gomti Nagar, Lucknow',
             rating: 4.2,
             priceRange: '2000 for two',
@@ -295,7 +295,7 @@ const restaurantData = {
         {
             id: 24,
             name: 'Punjab Grill',
-            cusines: ['North Indian','Kebab','Biryani','Mughlai'],
+            cuisines: ['North Indian','Kebab','Biryani','Mughlai'],
             location: 'Phoenix Plassio Mall Lucknow',
             rating: 4.2,
             priceRange: '2000 for two',
@@ -307,7 +307,7 @@ const restaurantData = {
         {
             id: 25,
             name: 'Garden Grille & Bar - Hilton Garden Inn',
-            cusines: ['North Indian','Kebab','Biryani','Mughlai','Fast Food','Desserts'],
+            cuisines: ['North Indian','Kebab','Biryani','Mughlai','Fast Food','Desserts'],
             location: 'Double Tree by Hilton Gomti Nagar, Lucknow',
             rating: 4.3,
             priceRange: '2000 for two',
@@ -319,7 +319,7 @@ const restaurantData = {
         {
             id: 26,
             name: 'The Drowning Street',
-            cusines: ['North Indian','Fast Food','Desserts','Chinese','Continental'],
+            cuisines: ['North Indian','Fast Food','Desserts','Chinese','Continental'],
             location: 'Gomti Nagar, Lucknow',
             rating: 4.3,
             priceRange: '1700 for two',
@@ -331,7 +331,7 @@ const restaurantData = {
         {
             id: 27,
             name: 'Void Bar & Nightclub',
-            cusines: ['North Indian','Fast Food','Desserts','Chinese','Continental','Asian'],
+            cuisines: ['North Indian','Fast Food','Desserts','Chinese','Continental','Asian'],
             location: 'Gomti Nagar, Lucknow',
             rating: 3.8,
             priceRange: '1500 for two',
@@ -343,7 +343,7 @@ const restaurantData = {
         {
             id: 28,
             name: 'Bigg Daddy',
-            cusines: ['North Indian','Fast Food','Chinese','Continental','Asian','Italian','Kebab'],
+            cuisines: ['North Indian','Fast Food','Chinese','Continental','Asian','Italian','Kebab'],
             location: 'Cyber Heights,Gomti Nagar, Lucknow',
             rating: 4.2,
             priceRange: '2000 for two',
@@ -355,7 +355,7 @@ const restaurantData = {
         {
             id: 29,
             name: 'Sky Bar - Renaissance Lucknow Hotel',
-            cusines: ['Fast Food','Chinese','Continental', 'Finger Food'],
+            cuisines: ['Fast Food','Chinese','Continental', 'Finger Food'],
             location: 'Renaissance Lucknow Hotel, Lucknow',
             rating: 4.2,
             priceRange: '3500 for two',
@@ -367,7 +367,7 @@ const restaurantData = {
         {
             id: 30,
             name: 'Jannat-Dayal Paradise',
-            cusines: ['Chinese','Continental','Italian'],
+            cuisines: ['Chinese','Continental','Italian'],
             location: 'Hotel Dayal Paradise, Gomti Nagar, Lucknow',
             rating: 4.0,
             priceRange: '3500 for two',
@@ -379,7 +379,7 @@ const restaurantData = {
         {
             id: 31,
             name: 'Cafe Delhi Heights',
-            cusines: ['Chinese','Continental','Italian','Burger','North Indian'],
+            cuisines: ['Chinese','Continental','Italian','Burger','North Indian'],
             location: 'Riverside Mall, Gomti Nagar, Lucknow',
             rating: 4.0,
             priceRange: '1500 for two',

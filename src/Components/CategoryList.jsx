@@ -28,17 +28,16 @@ const CategoryList = () => {
 
     return(
         <div className='category-container'>
-            {categories.map((category) => (
-                    <div 
-                    key={category.id}
-                    onClick={() => navigate(`/restaurants/${category.id}`)}
-                    className='category-card'
-                    style={{border: '1px solid black'}}
-                    >
-                        <img src={category.image} className="category-image"/>
-                        <h3>{category.name}</h3>
-                        <p>{category.description}</p>
-                    </div>
+                {categories.map((category) => (
+                        <div 
+                        key={category.id}
+                        onClick={() => navigate(`/restaurants/${category.id}`)}
+                        className='category-card'
+                        >
+                            <img src={category.image} alt='category-img' className="category-image"/>
+                            <h3>{category.name}</h3>
+                            <p>{category.description}</p>
+                        </div>
                 ))}
         </div>
     )

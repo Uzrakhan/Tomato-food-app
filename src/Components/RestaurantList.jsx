@@ -1,15 +1,52 @@
-import React from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import restaurantData from '../../Restaurants';
+import FilterComponent from "./Filter";
 
 
 const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) => {
     const { category } = useParams();
+    const restaurants = restaurantData[category] || []; //ensure its an array
+    const [filteredRestaurants,setFilteredRestaurants] = useState(restaurants);
     const navigate = useNavigate();
-    const restaurants = restaurantData[category] || [];
 
+
+    const extractPrice = (priceString) => {
+        const price = priceString.match(/\d+/);
+        return price ? parseInt(price[0],10) : 0;
+    };
+
+    const applyFilters = (restaurant,filters) => {
+        if(filters.length === 0) return true;
+        return filters.every((filter) => {
+            switch (filter) {
+                case 'rating_4.0': 
+                    return restaurant.rating > 4.0;
+                case 'open_now':
+                    return restaurant.isOpen === true;
+                case 'price_1200':
+                    const price = extractPrice(restaurant.priceRange);
+                    return price > 1200;
+                case 'outdoor_seating':
+                    return restaurant.outdoorSeating === true;
+                case 'serves_alcohol':
+                    return restaurant.servesAlcohol === true;
+                case 'pubs_bars':
+                    return restaurant.pubsAndBars === true;
+                default:
+                    return true;
+            }
+        })
+    };
+
+    //this function filters restaurants on basis of active filters
+    const handleFilterChange = (filters) => {
+       const filtered = restaurants.filter((restaurant) => applyFilters(restaurant,filters));
+       setFilteredRestaurants(filtered);
+    }
+    
     const truncateCuisines  = (cuisines,maxCount) => {
         if(!Array.isArray(cuisines) || cuisines.length === 0) {
             return 'No cuisines available';
@@ -23,17 +60,19 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
     const truncateName = (text,maxWords) => {
         const words = text.split(/\s+/);
         return words.length > maxWords ? words.slice(0,maxWords).join(' ') : text
-    }
+    };
+
+    
     return(
         <div>
             <section className='category-icons'>
                 <div className='icons-div'>
                     <div className='icons-content'>
-                        <img 
-                         src='https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png'
-                         className='icon-img'
-                         alt='Dining Out'
-                        />
+                            <img 
+                            src='https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png'
+                            className='icon-img'
+                            alt='Dining Out'
+                            />
                         <h5>Dining Out</h5>
                     </div>
                     <div className='icons-content'>
@@ -55,10 +94,11 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
                 </div>
             </section>
             <div className='filters-div'>
-                Filters div
+                <FilterComponent onFilterChange={handleFilterChange} currentCategory={category}/>
             </div>
             <div className='listing-container'>
-                {restaurants.map((restaurant) => (
+            {Array.isArray(filteredRestaurants) && filteredRestaurants.map((restaurant) => (
+                <Link to={ `/restaurant/${restaurant.id}`} key={restaurant.id}>
                         <div 
                         key={`${restaurant.id}-${restaurant.name}`}
                         className='listing-card'
@@ -87,6 +127,7 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
                                 </div>
                             </div>
                         </div>
+                </Link>
                 ))}
         </div>
         </div>

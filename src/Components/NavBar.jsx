@@ -5,13 +5,10 @@ const NavBar = () => {
     return(
         <nav className='nav-bar'>
                 <div className='links'>
-                    <div className='link-img'>
+                    <div className='link-logo'>
                         <p>
                             <Link to='/'>
-                                <img 
-                                 src='https://cdn.dribbble.com/userupload/13345863/file/original-edcd299c3e2c36a7a3fbd9b0dbae7d8c.png?resize=1504x1128&vertical=center'
-                                 width='95px'
-                                 height='70px'/>
+                                <h1>tomato</h1>
                             </Link>
                         </p>
                     </div>

@@ -1,3 +1,6 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .hero-section{
     height: 90vh;
     display: flex;
@@ -77,7 +80,7 @@
 }
 
 .category-card p{
-    font-size: 1.5vw;
+    font-size: 1vw;
     padding: 0.3vw;
     color: gray;
 }
@@ -96,6 +99,13 @@
     gap: 10vw;
 }
 
+.links .link-logo p a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 2.3vw;
+
+}
 .search-input{
     padding: 1vw 2vw;
     width: 500px;
@@ -228,7 +238,7 @@
 }
 
 .footer-container{
-    height: 60vh;
+    height: 50vh;
     background-color: #F8F8F8;
 }
 
@@ -275,16 +285,24 @@
 }
 
 .details-container {
-    display: flex;
-    flex-direction: column;
     padding: 1vw;
 }
+
+.sticky-header-container{
+    position: sticky;
+    top: 0;
+    background-color: #FFFFFF;
+    z-index: 100;
+}
+
 
 .details-name {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    text-transform: uppercase;
+    position: sticky;
 }
 
 .details-name section{
@@ -316,6 +334,166 @@
     color: #696969;
 }
 
-.details-image{
-    border-bottom: 1px solid black;
+
+.details-more-info{
+    margin-top: 1vw;
+    top: 0;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    gap: 1.5rem;
+}
+
+.details-more-info nav {
+    display: flex;
+    gap: 3rem; /* Add spacing between links */
+}
+
+.details-more-info nav a{
+    color: #696969;
+    text-decoration: none;
+    font-weight: 100;
+    font-size: 2vw;
+    gap: 2vw;
+}
+
+.overview-div {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    width: 60%;
+    margin-top: 1vw;
+}
+
+.overview-div > div{
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px); /* Apply blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Subtle border to enhance visibility */
+}
+.cuisine-div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    color: darkred;
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 35vh;
+    width: 100%;
+    padding: 1vw;
+}
+
+.cuisine-div h3 {
+    margin-bottom: 8px;
+}
+
+.cuisine-div-part2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 1vw;
+}
+
+.cuisine-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.cuisine-item a {
+    margin: 0;
+    font-size: 16px;
+    text-decoration: none;
+    color: #D6A600;
+}
+
+.speciality-div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    padding: 1vw;
+    justify-content: center;
+    align-items: start;
+    margin-left: 1px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.speciality-div h4 {
+    margin-bottom: 8px;
+    margin-left: 2px;
+}
+
+.speciality-div-part1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.speciality-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+}
+
+.speciality-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #696969;
+}
+
+.speciality-div-part2 h6{
+    margin: 0;
+    font-size: ;
+    color: #696969;
+}
+
+.avg-cost-div{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    height: 28vh;
+    padding: 1.4vw;
+    line-height: 2vw;
+    border-radius: 5px;
+}
+
+.avg-cost-div .avg-cost-div-2 p{
+    color: #696969;
+    font-size: 1.1vw;
+    font-weight: 100;
+}
+
+.more-info-div{
+    margin-top: 1vw;
+    border: 1px solid gray;
+    width: 100%;
+    padding: 2vw;
+    border-radius: 5px;
+}
+
+.more-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusts to screen size */
+    gap: 1.5vw;
+}
+
+.more-info-div-2 {
+    display: flex;
+    align-items: center;
+    gap: 1vw; /* Space between checkmark and text */
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+.more-info-div-2 p{
+    font-size: 1.23vw;
 }

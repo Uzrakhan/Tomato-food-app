@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import restaurantData from '../../Restaurants';
@@ -62,35 +62,42 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
         return words.length > maxWords ? words.slice(0,maxWords).join(' ') : text
     };
 
+    useEffect(() => {
+        const newRestaurants = restaurantData[category] || [];
+        setFilteredRestaurants(newRestaurants)
+    }, [category]);
+
     
     return(
         <div>
             <section className='category-icons'>
                 <div className='icons-div'>
-                    <div className='icons-content'>
-                            <img 
-                            src='https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png'
-                            className='icon-img'
-                            alt='Dining Out'
-                            />
+                    <NavLink to="/restaurants/diningOut" 
+                      className={({ isActive }) => `icons-content ${isActive ? 'active' : ''}`}
+                    >
+                        <img 
+                        src='https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png'
+                        className='icon-img'
+                        alt='Dining Out'
+                        />
                         <h5>Dining Out</h5>
-                    </div>
-                    <div className='icons-content'>
+                    </NavLink>
+                    <NavLink to="/restaurants/orderOnline" className={({isActive}) => `icons-content ${isActive ? 'active' : ''}`}>
                         <img 
                          src='https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png'
                          className='icon-img'
                          alt='Delivery'
                         />
                         <h5>Delivery</h5>
-                    </div>
-                    <div className='icons-content'>
+                    </NavLink>
+                    <NavLink to="/restaurants/nightLife" className={({isActive}) => `icons-content ${isActive ? 'active' : ''}`}>
                         <img 
                          src='https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png'
                          className='icon-img'
                          alt='NightLife'
                         />
                         <h5>Nightlife</h5>
-                    </div>
+                    </NavLink>
                 </div>
             </section>
             <div className='filters-div'>

@@ -99,7 +99,7 @@ body {
     gap: 10vw;
 }
 
-.links .link-logo p a{
+.links .link-logo  a{
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -361,18 +361,35 @@ body {
     gap: 1.5rem;
 }
 
-.details-more-info nav {
+.details-more-info  .tab-nav{
     display: flex;
-    gap: 3rem; /* Add spacing between links */
+    gap: 3rem; 
 }
 
-.details-more-info nav a{
+.details-more-info .tab-nav a{
     color: #696969;
     text-decoration: none;
     font-weight: 100;
     font-size: 2vw;
     gap: 2vw;
 }
+
+.tab-item {
+    padding: 1rem 0;
+    position: relative;
+    color: #666;
+}
+
+.active-tab {
+    color: #333;
+    font-weight: bold;
+    border-bottom: 3px solid #EF4F5F;
+}
+
+.tab-item:hover {
+    text-decoration: none;
+}
+  
 
 .overview-div {
     display: flex;

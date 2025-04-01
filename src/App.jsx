@@ -12,6 +12,7 @@ import './App.css'
 import RestaurantDetails from './pages/RestaurantDetails';
 import RestaurantDetailsOverview from './pages/RestDetailsOverview';
 import RestaurantDetailsOrderOnline from './pages/RestDetailsOrderOnline';
+import RestaurantDetailsLayout from './pages/RestDetailsLayout';
 
 
 function Layout({children}) {

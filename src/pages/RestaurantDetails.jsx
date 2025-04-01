@@ -68,33 +68,35 @@ const RestaurantDetails = () => {
                 </div>
 
                 <div className='details-more-info' style={{position:'sticky'}}>
-                    <div>
-                        <h2>
-                            <NavLink to={`/restaurant/${restaurant.id}/overview`}>
-                                Overview
-                            </NavLink>
-                        </h2>
-                    </div>
-                    <div>
-                        <h2>
-                            <NavLink to={`/restaurant/${restaurant.id}/orderonline`}>
+<div className='tab-nav'>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/overview`} 
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
+                            Overview
+                        </NavLink>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/orderonline`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Order Online
-                            </NavLink>
-                        </h2>
-                    </div>
-                    <div>
-                        <h2>
-                            <NavLink to={`/restaurant/${restaurant.id}/reviews`}>
+                        </NavLink>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/reviews`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Reviews
-                            </NavLink>
-                        </h2>
-                    </div>
-                    <div>
-                        <h2>
-                            <NavLink to={`/restaurant/${restaurant.id}/menu`}>
+                        </NavLink>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/menu`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Menu
-                            </NavLink>
-                        </h2>
+                        </NavLink>
                     </div>
                 </div>
         </div>

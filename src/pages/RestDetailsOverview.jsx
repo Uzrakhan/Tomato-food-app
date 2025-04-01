@@ -55,20 +55,36 @@ const RestaurantDetailsOverview = () => {
             </div>
             
             <div className='details-more-info' style={{position:'sticky'}}>
-                    <nav>
-                        <NavLink to={`/restaurant/${restaurant.id}/overview`} className={({ isActive }) => isActive ? "active-tab" : ""}>
+                    <div className='tab-nav'>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}`} 
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit'}}
+                        >
                             Overview
                         </NavLink>
-                        <NavLink to={`/restaurant/${restaurant.id}/orderonline`}>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/orderonline`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Order Online
                         </NavLink>
-                        <NavLink to={`/restaurant/${restaurant.id}/reviews`}>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/reviews`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Reviews
                         </NavLink>
-                        <NavLink to={`/restaurant/${restaurant.id}/menu`}>
+                        <NavLink 
+                        to={`/restaurant/${restaurant.id}/menu`}
+                        className={({ isActive }) => isActive ? "active-tab" : ""}
+                        style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
                                 Menu
                         </NavLink>
-                    </nav>
+                    </div>
             </div>
 
             <Outlet />

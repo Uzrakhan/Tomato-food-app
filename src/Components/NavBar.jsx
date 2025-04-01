@@ -6,11 +6,9 @@ const NavBar = () => {
         <nav className='nav-bar'>
                 <div className='links'>
                     <div className='link-logo'>
-                        <p>
-                            <Link to='/'>
-                                <h1>tomato</h1>
-                            </Link>
-                        </p>
+                        <Link to='/'>
+                            <h1>tomato</h1>
+                        </Link>
                     </div>
                     <div className='search-container'>
                         <input placeholder='Search Restaurants' className='search-input'/>

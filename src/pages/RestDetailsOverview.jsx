@@ -22,7 +22,7 @@ const RestaurantDetailsOverview = () => {
                     <h1>{restaurant.name}</h1>
                     <section>
                         <p 
-                        style={{backgroundColor: 'green', color: 'white', padding: '0.5vw 0.5vw', borderRadius: '10%', fontWeight:'bold', fontFamily: 'sans-serif'}}
+                        style={{backgroundColor: 'blue', color: 'white', padding: '0.5vw 0.5vw', borderRadius: '10%', fontWeight:'bold', fontFamily: 'sans-serif'}}
                         >
                             {restaurant.rating}
                             <FontAwesomeIcon icon={faStar} style={{width: '15px', marginLeft: '1vw'}}/>

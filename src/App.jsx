@@ -13,15 +13,27 @@ import RestaurantDetails from './pages/RestaurantDetails';
 import RestaurantDetailsOverview from './pages/RestDetailsOverview';
 import RestaurantDetailsOrderOnline from './pages/RestDetailsOrderOnline';
 import RestaurantDetailsLayout from './pages/RestDetailsLayout';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './Components/ProtectedRoute';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import AuthPage from './Components/AuthPage';
 
 
 function Layout({children}) {
   const location = useLocation();
+  const showFooter = !['/', '/login', '/register'].includes(location.pathname);
 
   return(
     <div>
+      {/* Conditionally show NavBar */}
       {location.pathname !== '/' && <NavBar />}
+
+      {/* Main Content */}
       {children}
+
+      {/* Conditionally show Footer */}
+      {showFooter && <Footer />}
     </div>
   )
 }
@@ -30,21 +42,27 @@ function Layout({children}) {
 function App() {
   
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/restaurants/:category' element={<RestaurantList />}/>
-          <Route path="/restaurant/:id" element={<RestaurantDetailsOverview />}>
-            <Route index element={<Overview />} /> {/* Default tab */}
-            <Route path="overview" element={<Overview />} />
-            <Route path="orderonline" element={<Order />}/>
-          </Route>
-          <Route path='/restaurants' element={<CategoryList />}/>
-        </Routes>
-      </Layout>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<AuthPage />}/>
+            <Route path='/home' element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }/>
+            <Route path='/restaurants/:category' element={<RestaurantList />}/>
+            <Route path="/restaurant/:id" element={<RestaurantDetailsOverview />}>
+              <Route index element={<Overview />} /> {/* Default tab */}
+              <Route path="overview" element={<Overview />} />
+              <Route path="orderonline" element={<Order />}/>
+            </Route>
+            <Route path='/restaurants' element={<CategoryList />}/>
+          </Routes>
+        </Layout>
+      </Router>
+    </AuthProvider>
   )
 }
 

@@ -46,7 +46,6 @@ function App() {
       <Router>
         <Layout>
           <Routes>
-            <Route path='/' element={<AuthPage />}/>
             <Route path='/home' element={
               <ProtectedRoute>
                 <Home />

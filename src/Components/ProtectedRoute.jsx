@@ -1,9 +1,14 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from "../context/AuthContext";
+import { Navigate,Outlet} from "react-router-dom";
 
-export default function ProtectedRoute({ children }) {
-  const { token } = useAuth();
-  return token ? children : <Navigate to="/"/>
-}
+const ProtectedRoute = () => {
+  const {currentUser,loading } = useAuth();
 
+   if (loading) {
+    return <div className="loading-screen">Loading...</div>;
+  }
+
+  return currentUser ? <Outlet /> : <Navigate to="/login" replace />;
+};
+
+export default ProtectedRoute;

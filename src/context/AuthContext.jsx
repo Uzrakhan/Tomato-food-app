@@ -1,59 +1,73 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  updateProfile
+} from 'firebase/auth';
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-    const [user, setUser] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem('token'));
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            if (token) {
-                try {
-                    const response = await axios.get('http://localhost:5000/api/me', {
-                        headers: { Authorization: `Bearer ${token}` },
-                    });
-                    setUser(response.data);
-                } catch (err) {
-                    console.error('Failed to fetch user profile:', err);
-                }
-            }
-        };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, []);
 
-        fetchUserProfile();
-    }, [token]);
+  // Enhanced signup with display name
+  const signup = async (email, password, displayName) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth, 
+        email, 
+        password
+      );
+      
+      await updateProfile(userCredential.user, {
+        displayName
+      });
 
-    const login = async (email, password) => {
-        try {
-            const response = await axios.post('http://localhost:5000/api/login', { email, password });
-            localStorage.setItem('token', response.data.token);
-            setToken(response.data.token);
-            setUser(response.data)
-        } catch (err) {
-            throw new Error('Login failed');
-        }
-    };
+      // Refresh user data
+      await userCredential.user.reload();
+      return userCredential;
+    } catch (error) {
+      throw error;
+    }
+  };
 
-    const register = async (name, email, password) => {
-        try {
-            await axios.post('http://localhost:5000/api/register', { name, email, password });
-        } catch (err) {
-            throw new Error('Registration failed');
-        }
-    };
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    const logout = () => {
-        localStorage.removeItem('token');
-        setToken(null);
-        setUser(null);
-    };
+  const logout = () => {
+    return signOut(auth);
+  };
 
-    return (
-        <AuthContext.Provider value={{ user, token, login, register, logout }}>
-            {children}
-        </AuthContext.Provider>
-    );
-}
+  return (
+    <AuthContext.Provider value={{ 
+      currentUser,
+      signup,
+      login,
+      logout,
+      loading 
+    }}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};

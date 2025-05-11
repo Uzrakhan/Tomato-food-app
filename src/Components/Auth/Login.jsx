@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
+import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
@@ -57,6 +58,13 @@ const Login = () => {
                 />
                 <button type="submit">Login</button>
             </form>
+
+            <div>
+                <p>Don't have an account?</p>
+                <Link to="/signup">
+                    Sign up here
+                </Link>
+            </div>
         </div>
     )
 };

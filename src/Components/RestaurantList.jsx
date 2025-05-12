@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import restaurantData from '../../Restaurants';
 import FilterComponent from "./Filter";
+import NavBar from './NavBar';
 
 
 const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) => {
@@ -70,6 +71,7 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
     
     return(
         <div>
+            <NavBar />
             <section className='category-icons'>
                 <div className='icons-div'>
                     <NavLink to="/restaurants/diningOut" 

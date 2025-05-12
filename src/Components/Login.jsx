@@ -20,7 +20,7 @@ export default function  Login() {
         }
     }
   return (
-    <div className='auth-form'>
+    <div className='bg-blue-500 w-screen h-screen'>
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
             <input
@@ -42,4 +42,3 @@ export default function  Login() {
     </div>
   )
 }
-

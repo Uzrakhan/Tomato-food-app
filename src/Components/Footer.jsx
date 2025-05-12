@@ -4,8 +4,7 @@ const Footer = () => {
     return(
         <div className='footer-container'>
             <div className='logo-div'>
-                
-                <h1>tomato</h1>
+                <h1 className='font-bold text-lg'>tomato</h1>
             </div>
             <div className='footer-links'>
                 <div>

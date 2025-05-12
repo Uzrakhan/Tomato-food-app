@@ -20,7 +20,6 @@ function Layout({ children }) {
   return (
     <div>
       {/* Conditionally show NavBar */}
-      {!isAuthPage && <NavBar />}
       {/* Main Content */}
       <main className="content-wrapper">
         {children}

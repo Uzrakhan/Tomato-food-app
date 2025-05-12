@@ -7,6 +7,7 @@ import {faPhoneVolume} from '@fortawesome/free-solid-svg-icons'
 import {faDiamondTurnRight} from '@fortawesome/free-solid-svg-icons'
 import {faShare} from '@fortawesome/free-solid-svg-icons'
 import {faComments} from '@fortawesome/free-solid-svg-icons'
+import NavBar from '../Components/NavBar';
 
 
 const RestaurantDetailsOverview = () => {
@@ -16,7 +17,9 @@ const RestaurantDetailsOverview = () => {
     const restaurant = allRestaurants.find((restaurant) => restaurant.id === parseInt(id,10));
     const [activeTab, setActiveTab] = useState("overview");
     return(
-        <div className='details-container'>
+        <div>
+            <NavBar />
+            <div className='details-container'>
             <div className='sticky-header-container'>
                 <div className='details-name'>
                     <h1>{restaurant.name}</h1>
@@ -88,6 +91,7 @@ const RestaurantDetailsOverview = () => {
             </div>
 
             <Outlet />
+            </div>
         </div>
     )
 };

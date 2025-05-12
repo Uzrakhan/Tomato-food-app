@@ -29,7 +29,9 @@ const RestaurantDetails = () => {
     const [activeTab, setActiveTab] = useState("Overview");
 
     return(
-        <div className='details-container'>
+        <div>
+            <NavBar />
+            <div className='details-container'>
                 <div className='sticky-header-container'  ref={headerRef}>
                     <div className='details-name'>
                         <h1>{restaurant.name}</h1>
@@ -99,7 +101,9 @@ const RestaurantDetails = () => {
                         </NavLink>
                     </div>
                 </div>
+            </div>
         </div>
+        
     )
 };
 

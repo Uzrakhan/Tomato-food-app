@@ -4,40 +4,67 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import {GoogleButton} from 'react-google-button';
 
 const Login = () => {
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-    const [error,setError] = useState("");
-    const { login } = useAuth();
+    const { currentUser, login, googleSignIn, error, setError, loading } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(currentUser && !loading) {
+            navigate("/home")
+        }
+    }, [currentUser,loading,navigate]);
+
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            await signInWithEmailAndPassword(auth,email,password);
-
-            await auth.currentUser?.reload();
+            await login(email,password);
             navigate('/home');
         }catch(err){
             console.error('Login error:',err);
-            switch(error.code) {
-                case 'auth/invalid-email':
-                setError('Invalid email address');
-                break;
-                case 'auth/user-disabled':
-                setError('Account disabled');
-                break;
-                case 'auth/user-not-found':
-                case 'auth/wrong-password':
-                setError('Invalid email or password');
-                break;
-                default:
-                setError('Failed to login. Please try again.');
-            }
+            handleErrors(err);
         }
     };
+
+     const handleGoogleSignIn = async () => {
+        try {
+        await googleSignIn();
+        } catch (error) {
+            handleErrors(err);
+        }
+    };
+
+    const handleErrors = (err) => {
+            switch (err.code) {
+        case "auth/invalid-email":
+            setError("Invalid email address");
+            break;
+        case "auth/user-disabled":
+            setError("Account disabled");
+            break;
+        case "auth/user-not-found":
+        case "auth/wrong-password":
+            setError("Invalid email or password");
+            break;
+        case "auth/popup-closed-by-user":
+            setError("Sign-in popup was closed");
+            break;
+        case "auth/account-exists-with-different-credential":
+            setError("Account already exists with different method");
+            break;
+        default:
+            setError("Failed to login. Please try again.");
+        }
+    };
+
+    if(loading) {
+        return <div className="flex justify-center items-center h-screen">Loading...</div>;
+    }
 
     return(
         <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
@@ -63,7 +90,7 @@ const Login = () => {
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-md space-y-6">
                     <div>
                         <label 
                             htmlFor="email" 
@@ -108,6 +135,20 @@ const Login = () => {
                     </button>
                 </form>
 
+                <div className="mt-6">
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                        <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 flex justify-center items-center">
+                        <GoogleButton onClick={() => handleGoogleSignIn()} />
+                    </div>
+                </div>
                 <div className="mt-6 text-center">
                     <p className="text-sm text-gray-600">
                         Don't have an account?{" "}

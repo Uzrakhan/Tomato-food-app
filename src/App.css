@@ -161,9 +161,6 @@ body {
     text-decoration: none;
 }
 
-
-
-
 .icons-content.active {
     border-bottom: 3px solid #EF4F5F;
 }
@@ -676,4 +673,37 @@ input {
     margin-top: 1.5rem;
     color: #636e72;
     font-size: 0.9rem;
+}
+
+.nav-bar {
+    @apply bg-white shadow-md py-4 px-6;
+}
+
+.links {
+    @apply flex items-center justify-between max-w-7xl mx-auto;
+}
+
+.link-logo h1 {
+    @apply text-2xl font-bold text-red-500;
+}
+
+.search-container {
+    @apply flex-grow mx-8;
+}
+
+.search-input {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500;
+}
+
+.user-div {
+    @apply flex items-center gap-4;
+}
+
+.user-img img {
+    @apply w-10 h-10 rounded-full object-cover;
+}
+
+/* Dropdown animation (optional) */
+.absolute {
+    @apply transition-all duration-200 ease-out;
 }

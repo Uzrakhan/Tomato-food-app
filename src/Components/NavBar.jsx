@@ -1,12 +1,65 @@
 import {Link,useNavigate} from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import React, {useState, useEffect,useRef} from 'react';
+import React, {useState, useEffect,useRef, useCallback, useMemo} from 'react';
+import restaurantData from '../../Restaurants';
+import { useDebounce } from '../hooks/useDebounce';
+
+const ALL_RESTAURANTS = [
+    ...restaurantData.diningOut,
+    ...restaurantData.orderOnline,
+    ...restaurantData.nightLife,
+]; // Empty dependency array ensures it runs only once.
+
+
 
 const NavBar = () => {
     const { currentUser,loading,logout } = useAuth(); //get user from authcontext
     const [isDrpdownOpen, setIsDropdownOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    // 👈 New state to store the results displayed to the user
+    const [searchResults, setSearchResults] = useState([]); 
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
+
+        const fetchSearchResults = useCallback((query) => {
+        const lowerCaseQuery = query.toLowerCase().trim();
+        
+        // Ensure ALL_RESTAURANTS is not empty, check your import:
+        if (ALL_RESTAURANTS.length === 0) {
+             console.error("Restaurant data is empty! Check '../../Restaurants' import.");
+        }
+
+        if (lowerCaseQuery.length < 2) {
+            setSearchResults([]);
+            return;
+        }
+
+        const filteredResults = ALL_RESTAURANTS.filter(restaurant => 
+            restaurant.name.toLowerCase().includes(lowerCaseQuery) ||
+            restaurant.cuisines.some(cuisine => cuisine.toLowerCase().includes(lowerCaseQuery))
+        );
+
+        setSearchResults(filteredResults);
+        // 👈 Check for this log when you stop typing
+        console.log(`[DEBOUNCE SUCCESS] Found ${filteredResults.length} results for: "${query}"`); 
+        
+    // CRITICAL: The dependency array must include setSearchResults, which is a stable setter.
+    }, [setSearchResults]); 
+
+
+
+
+    // 4. Create the Debounced Handler
+    const debouncedSearch = useDebounce(fetchSearchResults, 300);
+
+
+    // 5. Input Change Handler
+    const handleSearchChange = (event) => {
+        const query = event.target.value;
+        setSearchQuery(query); 
+        console.log("Input changed:", query);
+        debouncedSearch(query)
+    };
 
      //close dropdown when clicking outside
      useEffect(() => {
@@ -42,8 +95,44 @@ const NavBar = () => {
                             <h1>tomato</h1>
                         </Link>
                     </div>
-                    <div className='search-container'>
-                        <input placeholder='Search Restaurants' className='search-input'/>
+                    <div className='search-container relative'>
+                        <input 
+                            placeholder='Search Restaurants' className='search-input'                         
+                            value={searchQuery} 
+                            onChange={handleSearchChange}
+                        />
+
+                        {searchQuery.length > 0 && searchResults.length > 0 && (
+                            <div className='absolute left-0 top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-xl z-10 max-h-80 overflow-y-auto'>
+                                {searchResults.slice(0, 10).map(res => (
+                                    <Link 
+                                        key={res.id} 
+                                        to={`/restaurant/${res.id}`} 
+                                        className='flex items-center p-3 hover:bg-gray-100 border-b last:border-b-0'
+                                        onClick={() => setSearchResults([])} // Clear results on click
+                                    >
+                                        <img src={res.image} alt={res.name} className='w-8 h-8 object-cover rounded-sm mr-3'/>
+                                        <div>
+                                            <p className='font-semibold text-sm text-gray-800'>{res.name}</p>
+                                            <p className='text-xs text-gray-500'>{res.location}</p>
+                                        </div>
+                                    </Link>
+                                ))}
+                                {searchResults.length > 10 && (
+                                    <div className='p-3 text-center text-xs text-gray-500'>
+                                        Showing first 10 results...
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {searchQuery.length >= 2 && searchResults.length === 0 && (
+                         <div className='absolute left-0 top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-xl z-10 p-3 text-center text-sm text-gray-500'>
+                            No restaurants found for "{searchQuery}"
+                         </div>
+                        )}
+
+
                     </div>
 
                     <div className='user-div relative' ref={dropdownRef}>

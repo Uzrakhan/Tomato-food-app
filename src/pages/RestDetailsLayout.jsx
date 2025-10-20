@@ -11,13 +11,13 @@ const RestaurantDetailsLayout = () => {
         <NavLink
           to={`/restaurant/${id}`}
           end // Important for matching exact path
-          className={({ isActive }) => `tab ${isActive ? 'active-tab' : ''}`}
+          className={({ isActive }) => `tab ${isActive ? 'text-gray-800 font-bold border-b-[3px] border-[#EF4F5F]' : ''}`}
         >
           Overview
         </NavLink>
         <NavLink
           to={`/restaurant/${id}/orderonline`}
-          className={({ isActive }) => `tab ${isActive ? 'active-tab' : ''}`}
+          className={({ isActive }) => `tab ${isActive ? 'text-gray-800 font-bold border-b-[3px] border-[#EF4F5F]' : ''}`}
         >
           Order Online
         </NavLink>

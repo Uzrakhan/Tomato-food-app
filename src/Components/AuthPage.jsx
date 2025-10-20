@@ -26,12 +26,12 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="auth-container">
-      <div className='auth-card'>
-        <h1 className='auth-header'>Welcome to Tomato Food App</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#f8f9fa] p-8">
+      <div className='bg-white p-10 rounded-2xl shadow-lg w-full max-w-[400px]'>
+        <h1 className='text-center mb-8'>Welcome to Tomato Food App</h1>
       <h2>{isLogin ? 'Login' : 'Register'}</h2>
       
-      <form onSubmit={handleSubmit} className='form-group'>
+      <form onSubmit={handleSubmit} className='mb-6'>
         {!isLogin && (
           <input
             type="text"
@@ -39,6 +39,7 @@ export default function AuthPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className='w-full px-4 py-3 border border-[#e0e0e0] rounded-lg text-base transition duration-300 focus:outline-none focus:border-[#EF4F5F] focus:ring-2 focus:ring-[#EF4F5F]/20'
           />
         )}
         
@@ -48,6 +49,7 @@ export default function AuthPage() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className='w-full px-4 py-3 border border-[#e0e0e0] rounded-lg text-base transition duration-300 focus:outline-none focus:border-[#EF4F5F] focus:ring-2 focus:ring-[#EF4F5F]/20'
         />
         
         <input
@@ -56,16 +58,17 @@ export default function AuthPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className='w-full px-4 py-3 border border-[#e0e0e0] rounded-lg text-base transition duration-300 focus:outline-none focus:border-[#EF4F5F] focus:ring-2 focus:ring-[#EF4F5F]/20'
         />
         
-        <button type="submit" className='auth-button'>
+        <button type="submit" className='w-full py-3 bg-[#EF4F5F] text-white rounded-lg text-base font-medium flex items-center justify-center gap-2 cursor-pointer transition hover:bg-[#ed384a] disabled:bg-gray-400 disabled:cursor-not-allowed'>
           {isLogin ? 'Login' : 'Register'}
         </button>
       </form>
 
       <button 
         onClick={() => setIsLogin(!isLogin)}
-        className="toggle-auth"
+        className="bg-none border-none text-[#EF4F5F] font-medium cursor-pointer p-1 hover:underline"
       >
         {isLogin ? 
           'Need an account? Register' : 

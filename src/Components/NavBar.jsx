@@ -88,16 +88,16 @@ const NavBar = () => {
 
 
     return(
-        <nav className='nav-bar'>
-                <div className='links'>
+        <nav className='bg-white py-2.5 px-4 border-b border-gray-300'>
+                <div className='flex items-center justify-evenly gap-[10vw] w-full'>
                     <div className='link-logo'>
-                        <Link to='/home'>
+                        <Link to='/home' className='text-black font-bold text-[2.3vw] no-underline'>
                             <h1>tomato</h1>
                         </Link>
                     </div>
-                    <div className='search-container relative'>
+                    <div className='flex flex-grow mx-8 relative'>
                         <input 
-                            placeholder='Search Restaurants' className='search-input'                         
+                            placeholder='Search Restaurants' className='w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500'                         
                             value={searchQuery} 
                             onChange={handleSearchChange}
                         />
@@ -135,18 +135,18 @@ const NavBar = () => {
 
                     </div>
 
-                    <div className='user-div relative' ref={dropdownRef}>
+                    <div className='flex flex-row justify-evenly items-center gap-[1vw] relative' ref={dropdownRef}>
                         <div 
                          className='flex items-center gap-2 cursor-pointer'
                          onClick={() => setIsDropdownOpen(!isDrpdownOpen)}
                         >
-                            <div className='user-img'>
+                            <div className='w-[50px] h-[50px] rounded-full overflow-hidden'>
                                 <img
                                  src={currentUser?.photoURL || 
                                 "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                  }
                                  alt="User avatar"
-                                className='w-10 h-10 rounded-full'
+                                className='w-full h-full object-contain rounded-full'
                                 />
                             </div>
                             <p className='font-bold'>

@@ -27,18 +27,15 @@ const CategoryList = () => {
 
 
     return(
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-6 lg:px-8'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-6 lg:px-8 p-5 pb-5'>
                 {categories.map((category) => (
                         <div 
                         key={category.id}
                         onClick={() => navigate(`/restaurants/${category.id}`)}
-                        className='category-card cursor-pointer rounded-lg overflow-hidden 
-                        shadow-lg hover:shadow-xl transition-shadow
-                        duration-300 bg-white
-                        '
+                        className='min-w-[200px] border border-gray-300 rounded-lg shadow-md overflow-hidden cursor-pointer text-center transition-transform duration-300 hover:scale-110 hover:shadow-lg hover:border-gray-300'
                         >
                             <div className='aspect-w-4 aspect-h-3'>
-                                <img src={category.image} alt='category-img' className="object-contain h-full w-full"/>
+                                <img src={category.image} alt='category-img' className="w-full h-[200px] object-cover"/>
                             </div>
                             <div className='p-4 md:p-6'>
                                 <h3 className='text-xl md:text-2xl font-bold mb-2 text-gray-800'>

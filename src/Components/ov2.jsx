@@ -25,13 +25,13 @@ const Overview = () => {
 
 
   return (
-   <div style={{position:'sticky', top: '0'}} className='details-more-info' height='80vh'>
+   <div style={{position:'sticky', top: '0'}} className='mt-[1vw] top-0 bg-white flex flex-row justify-start items-center border-b border-gray-400 gap-6' height='80vh'>
         <div className='overview'>
           <div style={{ border: '1px solid black'}}>
             Cuisines
             <div style={{display: 'flex', gap: '2vw', fontSize: '1.2vw'}}>
             {restaurant.cuisines.map((cuisine) => (
-              <div className='cuisine-div'>
+              <div className=''>
                 <FontAwesomeIcon icon={faStar} style={{color: "#FFD43B"}} />
                 <p>{cuisine}</p>
               </div>

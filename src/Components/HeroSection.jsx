@@ -1,15 +1,16 @@
 import React from 'react';
-
+import useLocationStore from '../store/locationStore';
 
 const HeroSection = () => {
+    const currentLocation = useLocationStore((state) => state.currentLocation);
+
     return (
-        <div className='hero-section w-full max-h-screen flex items-center justify-center bg-cover 
-        bg-center bg-no-repeat relative px-5'>
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className='hero-content text-center text-white z-10 max-w-6xl w-full'>
+        <div className='hero-section w-full min-h-[100dvh] flex justify-center items-center relative p-5 bg-cover bg-center bg-no-repeat'>
+            <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+            <div className='z-10 text-center text-white max-w-[1200px] px-5'>
                 <h3 className='text-4xl md:text-6xl lg:text-7xl font-bold mb-2 md:mb-4'>tomato</h3>
-                <span className="text-lg md:text-2xl lg:text-3xl block">
-                    Discover the best food & drinks in Lucknow
+                <span className="text-lg md:text-2xl block">
+                    Discover the best food & drinks in <span className='font-semibold'>{currentLocation}</span>
                 </span>
             </div>
         </div>

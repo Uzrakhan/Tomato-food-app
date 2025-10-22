@@ -16,7 +16,6 @@ const NavBar = () => {
     const { currentUser,loading,logout } = useAuth(); //get user from authcontext
     const [isDrpdownOpen, setIsDropdownOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    // 👈 New state to store the results displayed to the user
     const [searchResults, setSearchResults] = useState([]); 
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
@@ -88,22 +87,22 @@ const NavBar = () => {
 
 
     return(
-        <nav className='bg-white py-2.5 px-4 border-b border-gray-300'>
-                <div className='flex items-center justify-evenly gap-[10vw] w-full'>
+        <nav className='bg-white py-5 px-4 sm:px-6  border-b border-gray-300'>
+                <div className='flex items-center justify-between sm:gap-6 w-full'>
                     <div className='link-logo'>
-                        <Link to='/home' className='text-black font-bold text-[2.3vw] no-underline'>
+                        <Link to='/home' className='text-black font-bold text-l md:text-2xl no-underline'>
                             <h1>tomato</h1>
                         </Link>
                     </div>
-                    <div className='flex flex-grow mx-8 relative'>
+                    <div className='flex flex-grow mx-4 relative'>
                         <input 
-                            placeholder='Search Restaurants' className='w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500'                         
+                            placeholder='Search Restaurants' className='w-full px-4 py-2 text-xs md:text-xl rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500'                         
                             value={searchQuery} 
                             onChange={handleSearchChange}
                         />
 
                         {searchQuery.length > 0 && searchResults.length > 0 && (
-                            <div className='absolute left-0 top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-xl z-10 max-h-80 overflow-y-auto'>
+                            <div className='absolute left-0 top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-xl z-30 max-h-80 overflow-y-auto'>
                                 {searchResults.slice(0, 10).map(res => (
                                     <Link 
                                         key={res.id} 
@@ -111,8 +110,8 @@ const NavBar = () => {
                                         className='flex items-center p-3 hover:bg-gray-100 border-b last:border-b-0'
                                         onClick={() => setSearchResults([])} // Clear results on click
                                     >
-                                        <img src={res.image} alt={res.name} className='w-8 h-8 object-cover rounded-sm mr-3'/>
-                                        <div>
+                                        <img src={res.image} alt={res.name} className='w-8 h-8 object-cover rounded-md mr-3 flex-shrink-0'/>
+                                        <div className='min-w-0'>
                                             <p className='font-semibold text-sm text-gray-800'>{res.name}</p>
                                             <p className='text-xs text-gray-500'>{res.location}</p>
                                         </div>
@@ -127,20 +126,18 @@ const NavBar = () => {
                         )}
 
                         {searchQuery.length >= 2 && searchResults.length === 0 && (
-                         <div className='absolute left-0 top-full mt-1 w-full bg-white border border-gray-300 rounded-md shadow-xl z-10 p-3 text-center text-sm text-gray-500'>
+                         <div className='p-3 text-center text-sm text-gray-500'>
                             No restaurants found for "{searchQuery}"
                          </div>
                         )}
-
-
                     </div>
 
-                    <div className='flex flex-row justify-evenly items-center gap-[1vw] relative' ref={dropdownRef}>
+                    <div className='flex flex-row justify-end items-center relative flex-shrink-0' ref={dropdownRef}>
                         <div 
                          className='flex items-center gap-2 cursor-pointer'
                          onClick={() => setIsDropdownOpen(!isDrpdownOpen)}
                         >
-                            <div className='w-[50px] h-[50px] rounded-full overflow-hidden'>
+                            <div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
                                 <img
                                  src={currentUser?.photoURL || 
                                 "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -149,7 +146,7 @@ const NavBar = () => {
                                 className='w-full h-full object-contain rounded-full'
                                 />
                             </div>
-                            <p className='font-bold'>
+                            <p className='font-bold text-sm hidden sm:block'>
                                 {currentUser?.displayName || 'Guest'}
                             </p>
                         </div>

@@ -27,7 +27,7 @@ const CategoryList = () => {
 
 
     return(
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:px-6 lg:px-8 p-5 pb-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:px-6 lg:px-8 p-10 pb-10'>
                 {categories.map((category) => (
                         <div 
                         key={category.id}

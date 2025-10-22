@@ -12,6 +12,9 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import Login from "./Components/Auth/Login";
 import SignUp from "./Components/Auth/SignUp"
 import Profile from "./Components/Profile";
+import Reviews from "./Components/Reviews";
+import Menu from "./Components/Menu";
+import Checkout from "./Components/Checkout";
 
 
 function Layout({ children }) {
@@ -92,6 +95,9 @@ function App() {
               <Route index element={<Overview />} /> {/* Default tab */}
               <Route path="overview" element={<Overview />} />
               <Route path="orderonline" element={<Order />} />
+              <Route path="reviews" element={<Reviews />}/>
+              <Route path="menu" element={<Menu />}/>
+              <Route path="checkout" element={<Checkout />}/>
             </Route>
           </Routes>
         </Layout>

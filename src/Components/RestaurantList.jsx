@@ -70,91 +70,96 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
 
     
     return(
-        <div>
+        <div className='min-h-screen bg-gray-50'>
             <NavBar />
-            <section className='category-icons'>
-                <div className='flex justify-between items-center border-b border-gray-400 bg-white'>
+            <section className=' bg-white sticky top-0 z-20 shadow-md'>
+                <div className='flex justify-between items-center border-b border-gray-200 overflow-x-auto whitespace-nowrap scrollbar-hide'>
                     <NavLink
                         to="/restaurants/diningOut"
                         className={({ isActive }) =>
-                            `flex items-center p-4 mx-5 text-center no-underline ${
+                            `flex items-center p-3 sm:p-4 text-center text-sm sm:text-base no-underline transition-colors duration-150 ${
                             isActive
-                                ? 'border-b-4 border-red-500 text-red-500'
-                                : 'text-black'
+                                ? 'border-b-4 border-red-500 text-red-500 font-semibold'
+                                : 'text-black hover:text-red-400'
                             }`
                         }
                     >
                     <img
                         src="https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png"
                         alt="Dining Out"
-                        className="w-8 h-8 m-4"
+                        className="w-6 h-6 sm:w-8 sm:h-8 mr-2"
                     />
-                    <h5 className="text-[2.7vw]">Dining Out</h5>
+                    <h5 className="md:text-3xl sm:text-sm">Dining Out</h5>
                     </NavLink>
 
                     <NavLink
                         to="/restaurants/orderOnline"
                         className={({ isActive }) =>
-                            `flex items-center p-4 mx-5 text-center no-underline ${
+                            `flex items-center p-3 sm:p-4 text-center text-sm sm:text-base no-underline transition-colors duration-150 ${
                             isActive
-                                ? 'border-b-4 border-red-500 text-red-500'
-                                : 'text-black'
+                                ? 'border-b-4 border-red-500 text-red-500 font-semibold'
+                                : 'text-gray-600 hover:text-red-400'
                             }`
                         }
                     >
                     <img
                         src="https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png"
                         alt="Delivery"
-                        className="w-8 h-8 m-4"
+                        className="w-6 h-6 sm:w-8 sm:h-8 mr-2"
                     />
-                    <h5 className="text-[2.7vw]">Delivery</h5>
+                    <h5 className="md:text-3xl sm:text-sm">Delivery</h5>
                     </NavLink>
 
                     <NavLink
                         to="/restaurants/nightLife"
                         className={({ isActive }) =>
-                            `flex items-center p-4 mx-5 text-center no-underline ${
+                            `flex items-center p-3 sm:p-4 text-center text-sm sm:text-base no-underline transition-colors duration-150 ${
                             isActive
-                                ? 'border-b-4 border-red-500 text-red-500'
-                                : 'text-black'
+                                ? 'border-b-4 border-red-500 text-red-500 font-semibold'
+                                : 'text-gray-600 hover:text-red-400'
                             }`
                         }
                     >
                     <img
                         src="https://b.zmtcdn.com/data/o2_assets/855687dc64a5e06d737dae45b7f6a13b1616149818.png"
                         alt="Nightlife"
-                        className="w-8 h-8 m-4"
+                        className="w-6 h-6 sm:w-8 sm:h-8 mr-2"
                     />
-                    <h5 className="text-[2.7vw]">Nightlife</h5>
+                    <h5 className="md:text-3xl sm:text-sm">Nightlife</h5>
                     </NavLink>
                 </div>
             </section>
-            <div className='bg-white flex justify-around items-center h-[15vh]'>
+
+            <div className='bg-white flex justify-around items-center py-3 border-b border-gray-100 shadow-sm'>
                 <FilterComponent onFilterChange={handleFilterChange} currentCategory={category}/>
             </div>
-            <div className='bg-white grid grid-cols-3 gap-4 mr-4 p-4'>
+
+
+            <div className='bg-gray-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto'>
             {Array.isArray(filteredRestaurants) && filteredRestaurants.map((restaurant) => (
-                <Link to={ `/restaurant/${restaurant.id}`} key={restaurant.id}>
+                <Link to={ `/restaurant/${restaurant.id}`} key={restaurant.id} className='block'>
                         <div 
                         key={`${restaurant.id}-${restaurant.name}`}
-                        className='flex flex-col h-[60vh] w-[27vw] m-8 rounded-lg relative transition-transform transition-border hover:border hover:border-gray-300 hover:shadow-md hover:p-0.5'
+                        className='flex flex-col h-full rounded-xl overflow-hidden shadow-lg bg-white transition-all duration-300 hover:shadow-xl'
                         >
-                            <div className='flex-[0.6] w-full h-[25vh] overflow-hidden rounded-lg'>
-                                {restaurant.image && <img src={restaurant.image} alt={restaurant.name}/>}
+                            <div className='w-full h-48 sm:h-56 overflow-hidden'>
+                                {restaurant.image && <img src={restaurant.image} alt={restaurant.name} className='w-full h-full object-cover'/>}
                             </div>
-                            <div className='flex-[0.4] p-1 text-black'>
-                                <div className='flex justify-between items-start mb-4'>
-                                    <h3 className="text-lg font-semibold">{truncateName(restaurant.name,4)}</h3>
-                                    <p className="bg-green-500 text-white px-2 rounded-full font-bold font-sans flex items-center">
+
+                            <div className='flex flex-col p-4 flex-grow'>
+                                <div className='flex justify-between items-start mb-2'>
+                                    <h3 className="text-lg sm:text-xl font-bold pr-2 truncate">{truncateName(restaurant.name,4)}</h3>
+                                    <p className="bg-green-600 text-white px-2 py-0.5 rounded-md text-sm font-bold font-sans flex items-center flex-shrink-0">
                                         {restaurant.rating}
-                                        <FontAwesomeIcon icon={faStar} className="w-4 ml-2"/>
+                                        <FontAwesomeIcon icon={faStar} className="w-3 h-3 ml-1"/>
                                     </p>
                                 </div>
-                                <div className='flex justify-between items-start mb-4 text-gray-500'>
-                                    <p className="text-[1.4vw]">
+
+                                <div className='flex justify-between items-start mb-1 text-gray-500 text-sm'>
+                                    <p className="pr-2">
                                         {truncateCuisines(restaurant.cuisines,2)}
                                     </p>
-                                    <p className="text-[1.4vw]">₹{restaurant.priceRange}</p>
+                                    <p className="text-gray-700 font-medium text-xs">₹{restaurant.priceRange}</p>
                                 </div>
                                 <div className='flex justify-between items-start mb-4 text-gray-500'>
                                     <p>{restaurant.location}</p>

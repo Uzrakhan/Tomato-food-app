@@ -2,35 +2,35 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div className="h-[50vh] bg-gray-100 flex flex-col justify-between p-6">
+        <div className=" bg-gray-100 flex flex-col justify-between p-6 min-h-[50vh]">
             
             {/* Logo */}
-            <div className="flex items-center mb-6">
-                <h1 className="font-sans font-bold text-lg">tomato</h1>
+            <div className="flex items-center mb-8">
+                <h1 className="font-sans font-bold text-2xl sm:text-3xl text-red-600">🍅tomato</h1>
             </div>
 
             {/* Links */}
-            <div className="flex justify-between items-start mb-6 h-[25vh]">
+            <div className="flex flex-col md:flex-row justify-between items-start mb-10 gap-y-8">
                 
-                <div>
-                    <h6 className="text-[1.5vw] font-semibold mb-2">ABOUT US</h6>
-                    <p>Who We Are</p>
-                    <p>Contact Us</p>
-                    <p>Blog</p>
+                <div className='text-sm sm:text-base w-1/2 md:w-auto'>
+                    <h6 className="text-base sm:text-xl font-bold mb-2 text-gray-800">ABOUT US</h6>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Who We Are</p>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Contact Us</p>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Blog</p>
                 </div>
 
-                <div>
-                    <h6 className="text-[1.5vw] font-semibold mb-2">LEARN MORE</h6>
-                    <p>Privacy</p>
-                    <p>Security</p>
-                    <p>Teams</p>
+                <div className="text-sm sm:text-base w-1/2 md:w-auto">
+                    <h6 className="text-base sm:text-xl font-bold mb-2 text-gray-800">LEARN MORE</h6>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Privacy</p>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Security</p>
+                    <p className="text-gray-600 hover:text-red-500 cursor-pointer">Teams</p>
                 </div>
 
-                <div className="mb-16">
-                    <h6 className="text-[1.5vw] font-semibold mb-2">SOCIAL LINKS</h6>
-                    <div className="flex justify-evenly items-center gap-4 mt-2">
+                <div className="md:w-auto w-full">
+                    <h6 className="text-base sm:text-xl font-bold mb-4 text-gray-800">SOCIAL LINKS</h6>
+                    <div className="flex items-center gap-6">
                         {/* LinkedIn */}
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="22" height="22" viewBox="0 0 20 20">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="24" height="24" viewBox="0 0 20 20" className="hover:fill-red-500 cursor-pointer transition">
                             <path d="M0 10C0 4.5 4.5 0 10 0C15.5 0 20 4.5 20 10C20 15.5 15.5 20 10 20C4.5 20 0 15.5 0 10ZM7.0625 8.375H4.75V15.4375H7.0625V8.375ZM7.25 6.1875C7.25 5.5 6.75 5 5.9375 5C5.125 5 4.5625 5.5 4.5625 6.1875C4.5625 6.875 5.0625 7.4375 5.875 7.4375C6.6875 7.4375 7.25 6.875 7.25 6.1875ZM15.5 11.375C15.5 9.1875 14.3125 8.1875 12.8125 8.1875C11.5625 8.1875 11 8.875 10.6875 9.375V8.375H8.375C8.375 9.0625 8.375 15.4375 8.375 15.4375H10.6875V11.5C10.6875 11.3125 10.6875 11.0625 10.75 10.9375C10.9375 10.5 11.3125 10.0625 11.9375 10.0625C12.75 10.0625 13.125 10.6875 13.125 11.6875V15.4375H15.4375C15.5 15.4375 15.5 11.375 15.5 11.375Z"/>
                         </svg>
 
@@ -50,8 +50,8 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div className="border-t border-gray-200 flex justify-center items-end text-center mt-4 pt-2">
-                <p className="text-sm">Copyright 2025 @ Tomato.uzra-dev All Rights Reserved.</p>
+            <div className="border-t border-gray-200 flex justify-center items-end text-center mt-auto pt-2">
+                <p className="text-xs sm:text-sm text-gray-500">Copyright 2025 @ Tomato.uzra-dev All Rights Reserved.</p>
             </div>
 
         </div>

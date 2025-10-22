@@ -9,7 +9,7 @@ import {faShare} from '@fortawesome/free-solid-svg-icons'
 import {faComments} from '@fortawesome/free-solid-svg-icons'
 
 
-const RestaurantDetailsOrderOnline = () => {
+const RestaurantDetailsReviews = () => {
     const { id } = useParams();
     const allRestaurants = Object.entries(restaurantData).flatMap(([key,restaurants]) => restaurants);
 
@@ -60,11 +60,13 @@ const RestaurantDetailsOrderOnline = () => {
                         </NavLink>
                         <NavLink 
                             to={`/restaurant/${restaurant.id}/orderonline`} 
-                            className={({ isActive }) => isActive ? "text-gray-800 font-bold border-b-[3px] border-[#EF4F5F]" : ""}
                         >
                                 Order Online
                         </NavLink>
-                        <NavLink to={`/restaurant/${restaurant.id}/reviews`}>
+                        <NavLink 
+                            to={`/restaurant/${restaurant.id}/reviews`}
+                            className={({ isActive }) => isActive ? "text-gray-800 font-bold border-b-[3px] border-[#EF4F5F]" : ""}
+                        >
                                 Reviews
                         </NavLink>
                         <NavLink to={`/restaurant/${restaurant.id}/menu`}>
@@ -78,4 +80,4 @@ const RestaurantDetailsOrderOnline = () => {
     )
 };
 
-export default RestaurantDetailsOrderOnline;
+export default RestaurantDetailsReviews;

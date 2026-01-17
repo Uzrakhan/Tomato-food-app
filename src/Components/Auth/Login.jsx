@@ -34,7 +34,7 @@ const Login = () => {
      const handleGoogleSignIn = async () => {
         try {
         await googleSignIn();
-        } catch (error) {
+        } catch (err) {
             handleErrors(err);
         }
     };

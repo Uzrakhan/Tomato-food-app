@@ -97,8 +97,16 @@ function App() {
               <Route path="orderonline" element={<Order />} />
               <Route path="reviews" element={<Reviews />}/>
               <Route path="menu" element={<Menu />}/>
-              <Route path="checkout" element={<Checkout />}/>
             </Route>
+
+            <Route
+              path="/checkout/:id?" // Optional ID to reference the restaurant/order
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </Layout>
       </Router>

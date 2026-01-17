@@ -147,7 +147,7 @@ const Order = () => {
                     <button 
                       onClick={() => {
                         sessionStorage.setItem('currentOrderCart', JSON.stringify(cart));
-                        navigate('/checkout')
+                        navigate(`/checkout/${id}`)
                       }}
                       className="block w-full text-center bg-red-500 text-white py-3 rounded-lg font-bold text-lg hover:bg-red-600 transition duration-200">
                         Proceed to Checkout

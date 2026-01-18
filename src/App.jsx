@@ -15,6 +15,8 @@ import Profile from "./Components/Profile";
 import Reviews from "./Components/Reviews";
 import Menu from "./Components/Menu";
 import Checkout from "./Components/Checkout";
+console.log("Project ID is:", import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID);
+console.log("Test Var:", import.meta.env.VITE_TEST_VAR);
 
 
 function Layout({ children }) {

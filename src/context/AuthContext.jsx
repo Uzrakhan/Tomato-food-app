@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { auth, googleProvider } from "../firebase"; // Import auth from your firebase config
 import {
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -17,19 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Added error state
 
-  useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result) {
-          console.log("Redirect login success:", result.user.displayName);
-          setCurrentUser(result.user);
-        }
-      })
-      .catch((err) => {
-        console.error("Redirect error:", err);
-        handleGoogleError(err);
-      })
-      
+  useEffect(() => {  
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in
@@ -48,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   const googleSignIn = async () => {
     try {
       setError("");
-     const result = await signInWithRedirect(auth, googleProvider);
+     const result = await signInWithPopup(auth, googleProvider);
 
      //clear any cached credentials
      if(window.CredentialMediationRequirements) {

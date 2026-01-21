@@ -174,7 +174,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
-            
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/7/21488467/72060334e56a39cb65348bdbbd82ab36_featured_v2.jpg?output-format=webp'
         },
         {
@@ -191,6 +212,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/1/800501/7eb11325b48f430c5aa71a8bda97c1a9_featured_v2.jpg?output-format=webp'
         },
         {
@@ -206,6 +249,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/1/21282741/e262ff28fb49355d18931b75735cc3c5_featured_v2.jpg?output-format=webp'
         },
         {
@@ -221,6 +286,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/7/21353607/dedbee3923e458d4bebdf2a23c25f278_featured_v2.jpg?output-format=webp'
         },
         {
@@ -236,6 +323,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/7/20663277/61dd0e808093444b2d04df3719951f51_featured_v2.jpg?output-format=webp'
         },
         {
@@ -251,6 +360,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/8/19657198/5b046d8a09bd583f2188a847fe8905bb_featured_v2.jpg?output-format=webp'
         },
         {
@@ -267,6 +398,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/2/18991962/f2f813557a46732871b3845ecb5475cf_featured_v2.jpg'
         },
         {
@@ -282,6 +435,28 @@ const restaurantData = {
             moreInfo: ['Home Delivery', 'Takeaway Available', 'Vegetarian Only', 'Restroom available', 'Indoor Seating', 'Low-Intensity Music', 'Kid Friendly', 'Stags Allowed', 'Table booking recommended', 'Work Friendly', 'Live Entertainment', 'Variable Menu'],
             placeKnownFor: ['Kid Friendly', 'Bar Games', 'Best Pub', 'Good Server', 'Music and Ambience', 'Rooftop Ambience'],
             contact: '+91000012345',
+            menu: {
+                "Recommended & Specials": [
+                    { id: 101, name: "Lamb Mandi Full", description: "Traditional slow-cooked lamb served over aromatic basmati rice.", price: 1599 },
+                    { id: 102, name: "Chicken Kabsa", description: "Spiced chicken and rice, a flavorful Arabic favorite.", price: 699 }
+                ],
+                "Authentic Arabic": [
+                    { id: 103, name: "Shish Tawook Kebab", description: "Grilled chicken cubes marinated in garlic, lemon, and spices.", price: 550 },
+                    { id: 104, name: "Hummus with Pita", description: "Creamy chickpea dip served with warm pita bread.", price: 290 }
+                ],
+                "Mughlai Main Course": [
+                    { id: 105, name: "Mutton Rogan Josh", description: "A rich, aromatic Kashmiri curry with tender mutton.", price: 720 },
+                    { id: 106, name: "Paneer Lababdar", description: "Paneer cubes in a tangy tomato-onion gravy.", price: 450 }
+                ],
+                "Breads & Accompaniments": [
+                    { id: 107, name: "Butter Naan", description: "Soft, leavened flatbread brushed with butter.", price: 80 },
+                    { id: 108, name: "Raita", description: "Yogurt mixed with grated cucumber and spices.", price: 120 }
+                ],
+                "Desserts & Drinks": [
+                    { id: 109, name: "Umm Ali", description: "Egyptian bread pudding, creamy and sweet.", price: 350 },
+                    { id: 110, name: "Laban (Buttermilk)", description: "Refreshing traditional Arabic buttermilk.", price: 150 }
+                ]
+            },
             image: 'https://b.zmtcdn.com/data/pictures/3/21376323/56001d23817cb71b96a54857c3e26396_featured_v2.jpg'
         }
     ],

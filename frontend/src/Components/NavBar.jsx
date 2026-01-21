@@ -3,6 +3,9 @@ import { useAuth } from '../context/AuthContext';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios'; // 1. Import Axios
 import { useDebounce } from '../hooks/useDebounce';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping, faClipboardList, faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 const NavBar = () => {
     const { currentUser, loading, logout } = useAuth();
@@ -14,6 +17,12 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     const API_URL = import.meta.env.VITE_API_URL;
+
+    const getCartCount = () => {
+        // This is a simplified check; usually you'd use a Context/Redux state here
+        const keys = Object.keys(localStorage).filter(k => k.startsWith('cart_'));
+        return keys.length > 0 ? "!" : null; 
+    };
 
     // 3. Fetch all restaurants from Backend on mount
     useEffect(() => {
@@ -120,6 +129,23 @@ const NavBar = () => {
                         </div>
                     )}
                 </div>
+
+                <div className="flex items-center gap-5 text-gray-600 font-medium mr-2">
+                    <Link 
+                        to="/orders" 
+                        className={`hover:text-red-500 transition-colors ${location.pathname === '/orders' ? 'text-red-500 font-bold' : ''}`}
+                    >
+                        <FontAwesomeIcon icon={faClipboardList} className='text-xl' />
+                    </Link>
+
+                <div className="relative cursor-pointer hover:text-red-500">
+                    <FontAwesomeIcon icon={faBagShopping} className="text-xl" />
+                    {getCartCount() && (
+                        <span className="absolute -top-1 -right-1 bg-red-500 w-2.5 h-2.5 rounded-full border-2 border-white"></span>
+                    )}
+                </div>
+                </div>
+                
 
                 <div className='flex flex-row justify-end items-center relative flex-shrink-0' ref={dropdownRef}>
                     <div 

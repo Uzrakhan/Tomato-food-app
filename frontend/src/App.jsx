@@ -15,6 +15,7 @@ import Profile from "./Components/Profile";
 import Reviews from "./Components/Reviews";
 import Menu from "./Components/Menu";
 import Checkout from "./Components/Checkout";
+import OrderHistory from "./pages/OrderHistory";
 
 
 function Layout({ children }) {
@@ -106,6 +107,13 @@ function App() {
                   <Checkout />
                 </ProtectedRoute>
               }
+            />
+
+            <Route 
+              path="/orders"
+              element={<ProtectedRoute>
+                <OrderHistory />
+              </ProtectedRoute>}
             />
           </Routes>
         </Layout>

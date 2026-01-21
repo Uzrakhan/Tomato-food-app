@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 const SuccessModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const navigate = useNavigate()
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
       <div className="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform transition-all animate-scale-up">
@@ -20,7 +22,7 @@ const SuccessModal = ({ isOpen, onClose }) => {
         </p>
 
         <button
-          onClick={onClose}
+          onClick={() => navigate('/orders')}
           className="w-full bg-red-500 text-white font-bold py-3 rounded-xl hover:bg-red-600 transition-colors shadow-lg shadow-red-200"
         >
           Track My Order

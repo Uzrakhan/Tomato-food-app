@@ -40,7 +40,24 @@ const Checkout = () => {
 
     const handleCheckout = (e) => {
         e.preventDefault();
-        setIsModalOpen(true)
+        // 1. Create the Order Object
+        const newOrder = {
+            orderId: `ORD-${Math.floor(Math.random() * 1000000)}`,
+            date: new Date().toLocaleString(),
+            items: [...cart],
+            total: total,
+            status: "Food is being prepared",
+            restaurantId: id
+        };
+
+        // 2. Save to Order History (localStorage)
+        const existingOrders = JSON.parse(localStorage.getItem('orderHistory') || '[]');
+        localStorage.setItem('orderHistory', JSON.stringify([newOrder, ...existingOrders]));
+
+        // 3. Show Modal
+        setIsModalOpen(true);
+
+        // 4. Clear Cart
         localStorage.removeItem(`cart_${id}`);
     };
 

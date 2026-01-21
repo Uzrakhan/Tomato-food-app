@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faCreditCard, faTruck } from '@fortawesome/free-solid-svg-icons';
+import SuccessModal from './SucessModal';
 
 const Checkout = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+
     
     // 1. Fixed State: We need both 'cart' and 'formData'
     const [cart, setCart] = useState([]);
@@ -15,6 +17,7 @@ const Checkout = () => {
         phone: '',
         paymentMethod: 'cash'
     });
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const savedCart = localStorage.getItem(`cart_${id}`);
@@ -37,9 +40,13 @@ const Checkout = () => {
 
     const handleCheckout = (e) => {
         e.preventDefault();
-        alert(`Order Placed! Total: ₹${total.toFixed(2)}`);
+        setIsModalOpen(true)
         localStorage.removeItem(`cart_${id}`);
-        navigate('/');
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        navigate('/'); // Navigate only after they close the modal
     };
 
     if (cart.length === 0) {
@@ -171,6 +178,12 @@ const Checkout = () => {
                     </div>
                 </div>
             </form>
+
+            <SuccessModal 
+                isOpen={isModalOpen} 
+                onClose={handleCloseModal} 
+                totalAmount={total}
+            />
         </div>
     );
 };

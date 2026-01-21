@@ -22,7 +22,6 @@ const FilterComponent = ({ onFilterChange,currentCategory }) => {
         } else {
             updatedFilters = [...activeFilters, filter]; // Add filter
         }
-        console.log("Toggle Filter - Updated Filters:", updatedFilters); // Debugging
         setActiveFilters(updatedFilters);
         onFilterChange(updatedFilters); // Send the updated filters to the parent
     };
@@ -30,7 +29,6 @@ const FilterComponent = ({ onFilterChange,currentCategory }) => {
     const removeFilter = (filter,e) => {
         e.stopPropagation();
         const updatedFilters = activeFilters.filter((item) => item !== filter);
-        console.log("Remove Filter - Updated Filters:", updatedFilters); // Debugging
         setActiveFilters(updatedFilters);
         onFilterChange(updatedFilters)
     };

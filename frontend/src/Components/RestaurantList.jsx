@@ -2,17 +2,38 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
-import restaurantData from '../../Restaurants';
 import FilterComponent from "./Filter";
 import NavBar from './NavBar';
-
+import axios from 'axios';
 
 const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) => {
     const { category } = useParams();
-    const restaurants = restaurantData[category] || []; //ensure its an array
-    const [filteredRestaurants,setFilteredRestaurants] = useState(restaurants);
+    const [allRestaurants, setAllRestaurants] = useState([]); // Store everything from DB
+    const [filteredRestaurants,setFilteredRestaurants] = useState([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    // 2. Fetch data from Backend
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get(`${API_URL}/api/restaurants`);
+                setAllRestaurants(response.data);
+                
+                // Initial filter based on category from URL
+                const initialFiltered = response.data.filter(res => res.type === category);
+                setFilteredRestaurants(initialFiltered);
+            } catch (error) {
+                console.error("Error fetching restaurants:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchRestaurants();
+    }, [category]);
 
     const extractPrice = (priceString) => {
         const price = priceString.match(/\d+/);
@@ -44,8 +65,9 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
 
     //this function filters restaurants on basis of active filters
     const handleFilterChange = (filters) => {
-       const filtered = restaurants.filter((restaurant) => applyFilters(restaurant,filters));
-       setFilteredRestaurants(filtered);
+        const categoryBase = allRestaurants.filter(res => res.type === category);
+        const filtered = categoryBase.filter((restaurant) => applyFilters(restaurant, filters));
+        setFilteredRestaurants(filtered);
     }
     
     const truncateCuisines  = (cuisines,maxCount) => {
@@ -63,12 +85,9 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
         return words.length > maxWords ? words.slice(0,maxWords).join(' ') : text
     };
 
-    useEffect(() => {
-        const newRestaurants = restaurantData[category] || [];
-        setFilteredRestaurants(newRestaurants)
-    }, [category]);
 
-    
+    if (loading) return <div className="p-10 text-center">Loading Restaurants...</div>;
+
     return(
         <div className='min-h-screen bg-gray-50'>
             <NavBar />
@@ -137,7 +156,7 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
 
             <div className='bg-gray-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto'>
             {Array.isArray(filteredRestaurants) && filteredRestaurants.map((restaurant) => (
-                <Link to={ `/restaurant/${restaurant.id}`} key={restaurant.id} className='block'>
+                <Link to={ `/restaurant/${restaurant._id}`} key={restaurant._id} className='block'>
                         <div 
                         key={`${restaurant.id}-${restaurant.name}`}
                         className='flex flex-col h-full rounded-xl overflow-hidden shadow-lg bg-white transition-all duration-300 hover:shadow-xl'

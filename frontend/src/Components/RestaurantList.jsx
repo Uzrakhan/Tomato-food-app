@@ -17,31 +17,38 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
 
     // 2. Fetch data from Backend
     useEffect(() => {
-    const fetchRestaurants = async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get(`${API_URL}/api/restaurants`);
-            const allData = response.data;
+        const fetchRestaurants = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get(`${API_URL}/api/restaurants`);
+                
+                // LOGIC FIX: Check if data is nested inside an object (common with MongoDB/Express)
+                // If response.data is an array, use it. If it's an object, look for a 'restaurants' property.
+                const allData = Array.isArray(response.data) 
+                    ? response.data 
+                    : (response.data.restaurants || []);
 
-            // FIX: If the data doesn't have a 'type' field, show everything.
-            // Once you add 'type' to your MongoDB, this will work perfectly.
-            const categoryData = allData.filter(res => {
-                if (!res.type) return true; // Show it if 'type' is missing (for now)
-                return res.type === category;
-            });
-            
-            setAllRestaurants(allData); 
-            setFilteredRestaurants(categoryData); 
-            
-        } catch (err) {
-            console.error("Fetch error:", err);
-        } finally {
-            setLoading(false);
-        }
-    };
+                // Now filtering will work because 'allData' is guaranteed to be an array
+                const categoryData = allData.filter(res => {
+                    if (!res.type) return true; 
+                    return res.type === category;
+                });
+                
+                setAllRestaurants(allData); 
+                setFilteredRestaurants(categoryData); 
+                
+            } catch (err) {
+                console.error("Fetch error:", err);
+                // Set empty arrays so the UI doesn't crash on .map()
+                setAllRestaurants([]);
+                setFilteredRestaurants([]);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    fetchRestaurants();
-}, [category]);
+        fetchRestaurants();
+    }, [category, API_URL]); // Added API_URL to dependency array for best practice
 
     const extractPrice = (priceString) => {
         const price = priceString.match(/\d+/);

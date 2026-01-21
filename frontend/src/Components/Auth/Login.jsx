@@ -20,9 +20,11 @@ const Login = () => {
     }, [currentUser,loading,navigate]);
 
     // Add this inside your Login component
-useEffect(() => {
-    console.log("Current Project ID in app:", import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID);
-}, []);
+    /*
+    useEffect(() => {
+        console.log("Current Project ID in app:", import.meta.env.VITE_REACT_APP_FIREBASE_PROJECT_ID);
+    }, []);
+    */
 
     const handleSubmit = async (e) =>{
         e.preventDefault();

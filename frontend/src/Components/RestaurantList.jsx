@@ -17,23 +17,31 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
 
     // 2. Fetch data from Backend
     useEffect(() => {
-        const fetchRestaurants = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get(`${API_URL}/api/restaurants`);
-                setAllRestaurants(response.data);
-                
-                // Initial filter based on category from URL
-                const initialFiltered = response.data.filter(res => res.type === category);
-                setFilteredRestaurants(initialFiltered);
-            } catch (error) {
-                console.error("Error fetching restaurants:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchRestaurants();
-    }, [category]);
+    const fetchRestaurants = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.get(`${API_URL}/api/restaurants`);
+            const allData = response.data;
+
+            // FIX: If the data doesn't have a 'type' field, show everything.
+            // Once you add 'type' to your MongoDB, this will work perfectly.
+            const categoryData = allData.filter(res => {
+                if (!res.type) return true; // Show it if 'type' is missing (for now)
+                return res.type === category;
+            });
+            
+            setAllRestaurants(allData); 
+            setFilteredRestaurants(categoryData); 
+            
+        } catch (err) {
+            console.error("Fetch error:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchRestaurants();
+}, [category]);
 
     const extractPrice = (priceString) => {
         const price = priceString.match(/\d+/);

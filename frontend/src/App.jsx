@@ -16,6 +16,7 @@ import Reviews from "./Components/Reviews";
 import Menu from "./Components/Menu";
 import Checkout from "./Components/Checkout";
 import OrderHistory from "./pages/OrderHistory";
+import { CartProvider } from "./context/CartContext";
 
 
 function Layout({ children }) {
@@ -44,80 +45,82 @@ function ProtectedRoute({ children }) {
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Layout>
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Navigate to="/login" replace />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            
-            {/* Protected Routes */}
-            <Route
-              path="/home"
+      <CartProvider>
+        <Router>
+          <Layout>
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              
+              {/* Protected Routes */}
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+              path="/profile"
               element={
                 <ProtectedRoute>
-                  <Home />
+                  <Profile />
                 </ProtectedRoute>
               }
-            />
-            <Route
-             path="/profile"
-             element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-             }
-            />
-            <Route
-              path="/restaurants"
-              element={
-                <ProtectedRoute>
-                  <CategoryList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/restaurants/:category"
-              element={
-                <ProtectedRoute>
-                  <RestaurantList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/restaurant/:id"
-              element={
-                <ProtectedRoute>
-                  <RestaurantDetailsOverview />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Overview />} /> {/* Default tab */}
-              <Route path="overview" element={<Overview />} />
-              <Route path="orderonline" element={<Order />} />
-              <Route path="reviews" element={<Reviews />}/>
-              <Route path="menu" element={<Menu />}/>
-            </Route>
+              />
+              <Route
+                path="/restaurants"
+                element={
+                  <ProtectedRoute>
+                    <CategoryList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/restaurants/:category"
+                element={
+                  <ProtectedRoute>
+                    <RestaurantList />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/restaurant/:id"
+                element={
+                  <ProtectedRoute>
+                    <RestaurantDetailsOverview />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Overview />} /> {/* Default tab */}
+                <Route path="overview" element={<Overview />} />
+                <Route path="orderonline" element={<Order />} />
+                <Route path="reviews" element={<Reviews />}/>
+                <Route path="menu" element={<Menu />}/>
+              </Route>
 
-            <Route
-              path="/checkout/:id?" // Optional ID to reference the restaurant/order
-              element={
-                <ProtectedRoute>
-                  <Checkout />
-                </ProtectedRoute>
-              }
-            />
+              <Route
+                path="/checkout/:id?" // Optional ID to reference the restaurant/order
+                element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route 
-              path="/orders"
-              element={<ProtectedRoute>
-                <OrderHistory />
-              </ProtectedRoute>}
-            />
-          </Routes>
-        </Layout>
-      </Router>
+              <Route 
+                path="/orders"
+                element={<ProtectedRoute>
+                  <OrderHistory />
+                </ProtectedRoute>}
+              />
+            </Routes>
+          </Layout>
+        </Router>
+      </CartProvider>
     </AuthProvider>
   );
 }

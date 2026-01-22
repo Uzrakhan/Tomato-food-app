@@ -31,20 +31,18 @@ Tomato is a modern, responsive food delivery web application built with the **ME
 ## 🛠 Tech Stack
 
 **Frontend:**
-* https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+* ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+* ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+* ![MUI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white) (Skeletons)
 
-* https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
-
-* https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white (Skeletons)
-
-* https://img.shields.io/badge/react--router--dom-6.23.1-blue (Navigation)
+* ![React Router DOM](https://img.shields.io/badge/react--router--dom-6.23.1-blue) (Navigation)
 
 **Backend:**
-* https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white
+* ![Node.js](https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white)
 
-* https://img.shields.io/badge/express.js-000000?style=for-the-badge&logo=express&logoColor=white
+* ![Express.js](https://img.shields.io/badge/express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
-* https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
+* ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 * Cors & Dotenv
 
@@ -87,20 +85,31 @@ Tomato is a modern, responsive food delivery web application built with the **ME
 ## ⚙️ Installation & Setup
 
 1. **Clone the repository**
+
    ```bash
+
    git clone https://github.com/Uzrakhan/Tomato-food-app
 
 2. **Setup Backend**
+
     cd backend
+
     npm install
+
     # Create a .env file and add your MONGODB_URI and PORT
+
     npm start
 
 3. **Setup Frontend**
+
     cd frontend
+
     npm install
+
     # Create a .env file and add your VITE_API_URL
+
     npm run dev
+
 
 -------------
 📄 License

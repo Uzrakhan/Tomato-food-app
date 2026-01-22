@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faCreditCard, faTruck } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faCreditCard, faTruck, faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import SuccessModal from './SucessModal';
+import { useCart } from '../context/CartContext';
 
 const Checkout = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { updateCartStats } = useCart();
 
     
     // 1. Fixed State: We need both 'cart' and 'formData'
@@ -25,6 +27,32 @@ const Checkout = () => {
             setCart(JSON.parse(savedCart));
         }
     }, [id]);
+
+    const updateQuantity = (itemId, delta) => {
+        const updatedCart = cart.map(item => {
+            if (item.id === itemId) {
+                return {...item, quantity: Math.max(0, item.quantity + delta)}
+            }
+            return item;
+        }).filter(item => item.quantity > 0);
+
+        saveAndSync(updatedCart)
+    }
+
+    const removeItem = (itemId) => {
+        const updatedCart = cart.filter(item => item.id !== itemId)
+        saveAndSync(updatedCart)
+    }
+
+    const saveAndSync = (updatedCart) => {
+        setCart(updatedCart);
+        if (updatedCart.length === 0) {
+            localStorage.removeItem(`cart_${id}`)
+        } else {
+            localStorage.setItem(`cart_${id}`, JSON.stringify(updatedCart))
+        }
+        updateCartStats()
+    }
 
     // 2. Fixed Calculations: Defining the variables used in the UI
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -59,11 +87,12 @@ const Checkout = () => {
 
         // 4. Clear Cart
         localStorage.removeItem(`cart_${id}`);
+        updateCartStats()
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
-        navigate('/'); // Navigate only after they close the modal
+        navigate('/orders'); // Navigate only after they close the modal
     };
 
     if (cart.length === 0) {
@@ -150,15 +179,34 @@ const Checkout = () => {
                 </div>
 
                 {/* Order Summary Section */}
-                <div className='lg:col-span-1 mt-8 lg:mt-0'>
-                    <div className='bg-gray-50 p-6 rounded-xl shadow-lg sticky top-24'>
-                        <h3 className='text-2xl font-bold text-gray-800 mb-4'>Your Order</h3>
+                <div className='lg:col-span-1'>
+                    <div className='bg-white p-6 rounded-2xl shadow-xl border border-gray-50 sticky top-24'>
+                        <h3 className='text-xl font-bold text-gray-800 mb-6'>Order Summary</h3>
 
-                        <div className='border-b pb-4 mb-4 space-y-2 max-h-40 overflow-y-auto'>
+                        <div className='space-y-6 mb-6 max-h-[40vh] overflow-y-auto pr-2'>
                             {cart.map(item => (
-                                <div key={item.id} className='flex justify-between text-sm text-gray-600'>
-                                    <span>{item.quantity} x {item.name}</span>
-                                    <span>₹{(item.price * item.quantity).toFixed(2)}</span>
+                                <div key={item.id} className='flex  flex-col gap-2 pb-4 border-b border-gray-50 last:border-0'>
+                                    <div className='flex justify-between items-start'>
+                                        <span className='font-bold text-gray-800 text-sm'>{item.name}</span>
+                                        <span className='font-bold text-gray-900 text-sm'>₹{(item.price * item.quantity).toFixed(2)}</span>
+                                    </div>
+                                    <div className='flex justify-between items-center'>
+                                        {/**quantity controls */}
+                                        <div className='flex items-center bg-red-50 text-red-600 rounded-lg border border-red-100'>
+                                            <button type='button' onClick={() => updateQuantity(item.id, -1)} className='px-2 py-1 hover:bg-red-100 rounded-l-lg'>
+                                                <FontAwesomeIcon icon={faMinus} size='xs'/>
+                                            </button>
+                                            <span className='px-3 font-bold text-xs'>
+                                                {item.quantity}
+                                            </span>
+                                            <button type="button" onClick={() => updateQuantity(item.id, 1)} className='px-2 py-1 hover:bg-red-100 rounded-r-lg'>
+                                                <FontAwesomeIcon icon={faPlus} size="xs" />
+                                            </button>
+                                        </div>
+                                        <button type='button' onClick={() => removeItem(item.id)} className='text-gray-300 hover:text-red-500 transition-colors'>
+                                            <FontAwesomeIcon icon={faTrash} size='sm'/>
+                                        </button>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faStar} from '@fortawesome/free-solid-svg-icons';
@@ -44,7 +44,7 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
                 setAllRestaurants([]);
                 setFilteredRestaurants([]);
             } finally {
-                setTimeout(() => setLoading(false), 4000)
+                setTimeout(() => setLoading(false), 2000)
             }
         };
 

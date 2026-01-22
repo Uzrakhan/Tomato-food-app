@@ -46,13 +46,16 @@ const getItemQuantity = (itemId) => {
 
     // 3. Load existing cart for THIS restaurant on mount
     useEffect(() => {
+        // 1. Load cart once
         const savedCart = JSON.parse(localStorage.getItem(`cart_${id}`) || '[]');
         setCart(savedCart);
         
-        if (categories.length > 0 && activeCategory === "") {
+        // 2. Set initial category only if we don't have one yet
+        if (categories.length > 0 && !activeCategory) {
             setActiveCategory(categories[0]);
         }
-    }, [id, categories, activeCategory]);
+        
+    }, [id]);
 
     // 4. IMPROVED: Function to save to localStorage and notify Context
     const saveCartToStorage = (updatedCart) => {

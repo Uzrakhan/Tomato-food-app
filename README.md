@@ -50,9 +50,9 @@ Tomato is a modern, responsive food delivery web application built with the **ME
 
 ## 📸 Screenshots
 
-| Home Page (Skeleton) | Restaurant Menu | Cart System |
-|---|---|---|
-| ![Skeleton](https://via.placeholder.com/200x400?text=Skeleton+Loading) | ![Menu](https://via.placeholder.com/200x400?text=Restaurant+Menu) | ![Cart](https://via.placeholder.com/200x400?text=Quantity+Selector) |
+| Home Page | Restaurant List | Restaurant Card | Order |
+|---|---|---|---|
+| ![Home Page](<img width="1886" height="819" alt="Image" src="https://github.com/user-attachments/assets/338c0c50-1d65-47ae-9efb-4f0a61038a32" />) | ![List](<img width="1898" height="809" alt="Image" src="https://github.com/user-attachments/assets/fecb9e1b-8997-4399-96d1-87b11dbec06a" />) | ![Card](<img width="1894" height="804" alt="Image" src="https://github.com/user-attachments/assets/69526a17-a42f-4957-bf47-25bf49d2cac5" />) | ![Order] ()
 
 ---
 

@@ -35,6 +35,8 @@ app.get("/", (req, res) => {
   res.send("API running...");
 });
 
-
+app.get("/ping", (req, res) => {
+  res.status(200).send("ok");
+});
 
 export default app;

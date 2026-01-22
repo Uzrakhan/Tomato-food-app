@@ -5,6 +5,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons';
 import FilterComponent from "./Filter";
 import NavBar from './NavBar';
 import axios from 'axios';
+import RestaurantSkeleton from './RestaurantSkeleton';
 
 const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) => {
     const { category } = useParams();
@@ -43,7 +44,7 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
                 setAllRestaurants([]);
                 setFilteredRestaurants([]);
             } finally {
-                setLoading(false);
+                setTimeout(() => setLoading(false), 4000)
             }
         };
 
@@ -101,7 +102,6 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
     };
 
 
-    if (loading) return <div className="p-10 text-center">Loading Restaurants...</div>;
 
     return(
         <div className='min-h-screen bg-gray-50'>
@@ -168,41 +168,47 @@ const RestaurantList = ({image, name, location, cuisines, priceRange, rating}) =
                 <FilterComponent onFilterChange={handleFilterChange} currentCategory={category}/>
             </div>
 
+            <div className='bg-gray-50 p-4 max-w-7xl mx-auto'>
+                {loading ? (
+                    <RestaurantSkeleton />
+                ) : (
+                    <div className='bg-gray-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto'>
+                        {Array.isArray(filteredRestaurants) && filteredRestaurants.map((restaurant) => (
+                            <Link to={ `/restaurant/${restaurant._id}`} key={restaurant._id} className='block'>
+                                    <div 
+                                    key={`${restaurant.id}-${restaurant.name}`}
+                                    className='flex flex-col h-full rounded-xl overflow-hidden shadow-lg bg-white transition-all duration-300 hover:shadow-xl'
+                                    >
+                                        <div className='w-full h-48 sm:h-56 overflow-hidden'>
+                                            {restaurant.image && <img src={restaurant.image} alt={restaurant.name} className='w-full h-full object-cover'/>}
+                                        </div>
 
-            <div className='bg-gray-50 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto'>
-            {Array.isArray(filteredRestaurants) && filteredRestaurants.map((restaurant) => (
-                <Link to={ `/restaurant/${restaurant._id}`} key={restaurant._id} className='block'>
-                        <div 
-                        key={`${restaurant.id}-${restaurant.name}`}
-                        className='flex flex-col h-full rounded-xl overflow-hidden shadow-lg bg-white transition-all duration-300 hover:shadow-xl'
-                        >
-                            <div className='w-full h-48 sm:h-56 overflow-hidden'>
-                                {restaurant.image && <img src={restaurant.image} alt={restaurant.name} className='w-full h-full object-cover'/>}
-                            </div>
+                                        <div className='flex flex-col p-4 flex-grow'>
+                                            <div className='flex justify-between items-start mb-2'>
+                                                <h3 className="text-lg sm:text-xl font-bold pr-2 truncate">{truncateName(restaurant.name,4)}</h3>
+                                                <p className="bg-green-600 text-white px-2 py-0.5 rounded-md text-sm font-bold font-sans flex items-center flex-shrink-0">
+                                                    {restaurant.rating}
+                                                    <FontAwesomeIcon icon={faStar} className="w-3 h-3 ml-1"/>
+                                                </p>
+                                            </div>
 
-                            <div className='flex flex-col p-4 flex-grow'>
-                                <div className='flex justify-between items-start mb-2'>
-                                    <h3 className="text-lg sm:text-xl font-bold pr-2 truncate">{truncateName(restaurant.name,4)}</h3>
-                                    <p className="bg-green-600 text-white px-2 py-0.5 rounded-md text-sm font-bold font-sans flex items-center flex-shrink-0">
-                                        {restaurant.rating}
-                                        <FontAwesomeIcon icon={faStar} className="w-3 h-3 ml-1"/>
-                                    </p>
-                                </div>
-
-                                <div className='flex justify-between items-start mb-1 text-gray-500 text-sm'>
-                                    <p className="pr-2">
-                                        {truncateCuisines(restaurant.cuisines,2)}
-                                    </p>
-                                    <p className="text-gray-700 font-medium text-xs">₹{restaurant.priceRange}</p>
-                                </div>
-                                <div className='flex justify-between items-start mb-4 text-gray-500'>
-                                    <p>{restaurant.location}</p>
-                                </div>
-                            </div>
-                        </div>
-                </Link>
-                ))}
+                                            <div className='flex justify-between items-start mb-1 text-gray-500 text-sm'>
+                                                <p className="pr-2">
+                                                    {truncateCuisines(restaurant.cuisines,2)}
+                                                </p>
+                                                <p className="text-gray-700 font-medium text-xs">₹{restaurant.priceRange}</p>
+                                            </div>
+                                            <div className='flex justify-between items-start mb-4 text-gray-500'>
+                                                <p>{restaurant.location}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </Link>
+                        ))}
+                    </div>  
+                )}
             </div>
+            
         </div>
     )
 };
